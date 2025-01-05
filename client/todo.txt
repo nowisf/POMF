@@ -1,0 +1,21 @@
+4/1/25: me quede en mensaje de autentificacion completado
+Login & registro
+	[x] boton "volver" en escena registro
+	[] marcar en rojo casillas "no free"
+	[] validacion de datos en front y back 
+	[] pasar a escena login con ambos "free" 
+		[] poner un mensaje de creacion de cuenta satisfactorio en caso de doble true en "free"
+	[] subir repo a git al lograr rgistro & login 
+	[] en escenas de unico formulario que enter realic accion de boton
+Data de logueo exitoso:
+	[] elo
+	[] sets
+	[] fichas
+	[] amigos
+	[] logros
+	[] monedas
+	
+Data del lado del servidor
+	[] imagenes fichas
+	[] descripciones fichas
+	[] nombre(ID) fichas

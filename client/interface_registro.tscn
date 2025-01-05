@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://755crq4hxdue"]
+
+[ext_resource type="Script" path="res://interface_registro.gd" id="1_k43k3"]
+
+[node name="InterfaceRegistro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k43k3")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Tittle" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 58
+text = "New account"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Username"
+
+[node name="InputUsername" type="LineEdit" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_placeholder_color = Color(1, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Password
+"
+
+[node name="InputPassword" type="LineEdit" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_placeholder_color = Color(1, 0, 0, 1)
+secret = true
+secret_character = "°"
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Mail"
+
+[node name="InputMail" type="LineEdit" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="BotonRegistro" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Sign Up"
+
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/BotonRegistro" to="." method="_on_boton_registro_pressed"]
