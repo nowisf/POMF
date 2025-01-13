@@ -6,7 +6,7 @@ Login & registro
 	[x] pasar a escena login con ambos "free" 
 		[x] poner un mensaje de creacion de cuenta satisfactorio en caso de doble true en "free"
 	[x] subir repo a git al lograr rgistro & login 
-	[] en escenas de unico formulario que enter realic accion de boton
+	[] en escenas de unico formulario que enter realice accion de boton
 Data de logueo exitoso:
 	[] elo
 	[] sets
@@ -18,13 +18,17 @@ Data de logueo exitoso:
 Data del lado del cliente
 	[] nick recordado
 
-	[] imagenes fichas
+	[x] imagenes fichas
 	[] descripciones fichas
-	[] nombre(ID) fichas
+	[x] nombre(ID) fichas
 
 
 
 10/1/25:
-	[]fichaclickeable seleccionada
+	[x]fichaclickeable seleccionada
 		[]usado para reemplazar contenido al buildear
 		[]usado para seleccionar opcion al jugar
+		
+13/1/25
+	[] animaciones con margenes
+	[]animaciones con invertir sprite
