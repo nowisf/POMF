@@ -20,6 +20,21 @@ console.log(`running on ws://127.0.0.1:${port}`);
 
 inicializarBD();
 
+interface LoginData {
+  type: "login";
+  usuario: string;
+  clave: string;
+}
+
+interface RegisterData {
+  type: "register";
+  usuario: string;
+  clave: string;
+  mail: string;
+}
+
+type MessageData = LoginData | RegisterData | { type: string }; // Agrega otros tipos si necesitas.
+
 wss.on("connection", (ws: WebSocket) => {
   console.log("buenas");
   ws.on("message", (message: WebSocket.RawData) => {
@@ -32,9 +47,13 @@ wss.on("connection", (ws: WebSocket) => {
         `Credenciales recibidas - Usuario: ${usuario}, Clave: ${clave}`
       );
 
-      // Valida las credenciales (aquí un ejemplo simple)
-      if (usuario === "admin" && clave === "1234") {
-        ws.send(JSON.stringify({ type: "login_respuesta", exito: true }));
+      const usuarioData = obtenerUsuarioPorUsername(usuario);
+      if (usuarioData) {
+        if (usuarioData.password === clave) {
+          ws.send(JSON.stringify({ type: "login_respuesta", exito: true }));
+        } else {
+          ws.send(JSON.stringify({ type: "login_respuesta", exito: false }));
+        }
       } else {
         ws.send(JSON.stringify({ type: "login_respuesta", exito: false }));
       }
@@ -47,8 +66,6 @@ wss.on("connection", (ws: WebSocket) => {
       if (obtenerUsuarioPorCorreo(data.mail) != undefined) {
         mensaje.mailFree = false;
       }
-      console.log("rwrrf");
-      console.log(obtenerUsuarioPorUsername(data.usuario));
       if (obtenerUsuarioPorUsername(data.usuario) != undefined) {
         mensaje.userFree = false;
       }

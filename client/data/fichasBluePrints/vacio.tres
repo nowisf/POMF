@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://go2l5eyfj1jm"]
+
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_7vut0"]
+[ext_resource type="Texture2D" uid="uid://cc1v8j0dmmtlv" path="res://vacio.png" id="2_0epqy"]
+
+[resource]
+script = ExtResource("1_7vut0")
+nombre = "vacio"
+descripcion = "ausencia"
+texture = ExtResource("2_0epqy")
+hero = false

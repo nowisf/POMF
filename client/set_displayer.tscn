@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dul8fx85u10ab"]
+
+[ext_resource type="Script" path="res://set_displayer.gd" id="1_jhfwy"]
+[ext_resource type="PackedScene" uid="uid://d2rkb4kcroahk" path="res://ficha_clickeable.tscn" id="2_odg8o"]
+[ext_resource type="Resource" uid="uid://28o4465u4nwx" path="res://data/set (test)/testSet.tres" id="2_vgs2a"]
+
+[node name="Set displayer" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_jhfwy")
+setActual = ExtResource("2_vgs2a")
+ficha_scene = ExtResource("2_odg8o")

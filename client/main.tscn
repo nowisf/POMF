@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgqmtv6k8swh0"]
+[gd_scene load_steps=7 format=3 uid="uid://cgqmtv6k8swh0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_xqwck"]
 [ext_resource type="PackedScene" uid="uid://wxcasnbpknym" path="res://online.tscn" id="2_hpw6c"]
-[ext_resource type="PackedScene" uid="uid://ciysbwy5hom4g" path="res://Conectando.tscn" id="3_ni1ge"]
+[ext_resource type="PackedScene" uid="uid://ciysbwy5hom4g" path="res://Cargando.tscn" id="3_ni1ge"]
 [ext_resource type="PackedScene" uid="uid://capv1tkqxflob" path="res://Login.tscn" id="4_7fxds"]
 [ext_resource type="PackedScene" uid="uid://755crq4hxdue" path="res://interface_registro.tscn" id="5_esyvg"]
+[ext_resource type="PackedScene" uid="uid://dauyijy4uug81" path="res://builder_interface.tscn" id="6_tnk3y"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xqwck")
@@ -14,10 +15,13 @@ script = ExtResource("1_xqwck")
 [node name="InterfaceRegistro" parent="." instance=ExtResource("5_esyvg")]
 visible = false
 
-[node name="Conectando" parent="." instance=ExtResource("3_ni1ge")]
+[node name="Cargando" parent="." instance=ExtResource("3_ni1ge")]
 visible = false
 
 [node name="Login" parent="." instance=ExtResource("4_7fxds")]
+visible = false
+
+[node name="Builder" parent="." instance=ExtResource("6_tnk3y")]
 visible = false
 
 [connection signal="coneccion_exitosa" from="Online" to="." method="_on_online_coneccion_exitosa"]

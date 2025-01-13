@@ -53,6 +53,14 @@ text = "Username"
 layout_mode = 2
 theme_override_colors/font_placeholder_color = Color(1, 0, 0, 1)
 
+[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Mail"
+
+[node name="InputMail" type="LineEdit" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_placeholder_color = Color(1, 0, 0, 1)
+
 [node name="Label2" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Password
@@ -64,16 +72,10 @@ theme_override_colors/font_placeholder_color = Color(1, 0, 0, 1)
 secret = true
 secret_character = "°"
 
-[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
-layout_mode = 2
-text = "Mail"
-
-[node name="InputMail" type="LineEdit" parent="Panel/VBoxContainer"]
-layout_mode = 2
-
 [node name="BotonRegistro" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Sign Up"
 
+[connection signal="hidden" from="." to="." method="_on_hidden"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/BotonRegistro" to="." method="_on_boton_registro_pressed"]

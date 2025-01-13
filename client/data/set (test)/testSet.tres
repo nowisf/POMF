@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Set" load_steps=5 format=3 uid="uid://28o4465u4nwx"]
+
+[ext_resource type="Script" path="res://data/set.gd" id="1_rpybc"]
+[ext_resource type="Resource" uid="uid://02a6r7qqe5xd" path="res://data/fichasBluePrints/goblin.tres" id="1_s8rlo"]
+[ext_resource type="Resource" uid="uid://go2l5eyfj1jm" path="res://data/fichasBluePrints/vacio.tres" id="2_al4ex"]
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="3_gx3qv"]
+
+[resource]
+script = ExtResource("1_rpybc")
+setName = "Nuevo Set"
+fichaHeroe = ExtResource("1_s8rlo")
+fichas = Array[ExtResource("3_gx3qv")]([ExtResource("2_al4ex"), ExtResource("2_al4ex"), ExtResource("1_s8rlo"), ExtResource("2_al4ex"), ExtResource("2_al4ex"), ExtResource("2_al4ex"), ExtResource("2_al4ex"), ExtResource("2_al4ex")])
+ficha_vacia = ExtResource("2_al4ex")

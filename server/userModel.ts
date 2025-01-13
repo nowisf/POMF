@@ -1,5 +1,11 @@
-const Database = require("better-sqlite3");
-const db = new Database("mi_base_de_datos.db");
+import { db } from "./db.ts";
+
+interface User {
+  id: number;
+  username: string;
+  password: string;
+  mail: string;
+}
 
 const userTable =
   "CREATE TABLE IF NOT EXISTS users (" +
@@ -9,34 +15,34 @@ const userTable =
   "'mail' VARCHAR NOT NULL UNIQUE" +
   ");";
 
-export function inicializarBD() {
+export const inicializarBD = () => {
   db.exec(userTable);
-
   console.log("BD inicializadaxxx ;;)");
-}
+};
 
-export function crearUsuario(username, password, mail) {
+export const crearUsuario = (username, password, mail) => {
   const stmt = db.prepare(
     "INSERT INTO users (username, password, mail) VALUES (?, ?, ?)"
   );
   const resultado = stmt.run(username, password, mail);
   return resultado;
-}
+};
 
-export function obtenerUsuarioPorID(id) {
+export const obtenerUsuarioPorID = (id: number): User | undefined => {
   const stmt = db.prepare("SELECT * FROM users WHERE id = ?");
   const usuario = stmt.get(id);
-  return usuario;
-}
 
-export function obtenerUsuarioPorUsername(username) {
+  return usuario as User | undefined;
+};
+
+export const obtenerUsuarioPorUsername = (username): User | undefined => {
   const stmt = db.prepare("SELECT * FROM users WHERE username = ?");
   const usuario = stmt.get(username);
-  return usuario;
-}
+  return usuario as User | undefined;
+};
 
-export function obtenerUsuarioPorCorreo(mail) {
+export const obtenerUsuarioPorCorreo = (mail): User | undefined => {
   const stmt = db.prepare("SELECT * FROM users WHERE mail = ?");
   const usuario = stmt.get(mail); // `get` devuelve el primer resultado encontrado
-  return usuario;
-}
+  return usuario as User | undefined;
+};
