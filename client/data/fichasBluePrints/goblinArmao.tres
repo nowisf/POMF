@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://2u77g3xxh5v2"]
+
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_4kqe6"]
+[ext_resource type="Texture2D" uid="uid://skc64ccbqvvm" path="res://duendeArmao.png" id="2_gsxff"]
+
+[resource]
+script = ExtResource("1_4kqe6")
+nombre = "goblinArmao"
+descripcion = "goblin con extraño garrote"
+texture = ExtResource("2_gsxff")
+hero = false

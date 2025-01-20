@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://dayv7pbr56mmi"]
+
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_cjo4l"]
+[ext_resource type="Texture2D" uid="uid://cy2o4lb4pppfh" path="res://duendeeNojao.png" id="2_uw687"]
+
+[resource]
+script = ExtResource("1_cjo4l")
+nombre = "goblinojao"
+descripcion = "similar al goblin pero sufriendo un mal dia"
+texture = ExtResource("2_uw687")
+hero = false

@@ -1,19 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dauyijy4uug81"]
+[gd_scene load_steps=5 format=3 uid="uid://dauyijy4uug81"]
 
 [ext_resource type="Script" path="res://builder_interface.gd" id="1_bfsiu"]
-[ext_resource type="Texture2D" uid="uid://cyg3iokpwu6ll" path="res://duende.png" id="2_5qcur"]
 [ext_resource type="PackedScene" uid="uid://dul8fx85u10ab" path="res://set_displayer.tscn" id="3_mhdof"]
-
-[sub_resource type="Gradient" id="Gradient_1ikl3"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ax5op"]
-gradient = SubResource("Gradient_1ikl3")
-height = 32
+[ext_resource type="PackedScene" uid="uid://vgcveikvebf8" path="res://fichas.tscn" id="3_urjmn"]
+[ext_resource type="PackedScene" uid="uid://cwmcrxufcpyaf" path="res://ficha_data_displayer.tscn" id="4_xb12x"]
 
 [node name="Builder" type="HBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -46,86 +43,31 @@ custom_minimum_size = Vector2(19, 19)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer2" parent="PanelContainer/Set Displayer" instance=ExtResource("3_mhdof")]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/Set Displayer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = -10
+
+[node name="SetDisplayer" parent="PanelContainer/Set Displayer/MarginContainer" instance=ExtResource("3_mhdof")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
-
-[node name="PanelContainer3" type="PanelContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer3"]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer3/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect9" type="TextureRect" parent="PanelContainer3/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(252, 252)
-layout_mode = 2
-size_flags_horizontal = 0
-texture = SubResource("GradientTexture2D_ax5op")
-
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer3/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="PanelContainer3/VBoxContainer/HBoxContainer2/PanelContainer"]
-layout_mode = 2
-text = "nombre"
-horizontal_alignment = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer3/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="PanelContainer3/VBoxContainer/PanelContainer"]
-layout_mode = 2
-text = "data"
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer2"]
+[node name="Fichas" parent="PanelContainer2" instance=ExtResource("3_urjmn")]
 layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-alignment = 1
-
-[node name="TextureRect8" type="TextureRect" parent="PanelContainer2/ScrollContainer/VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(252, 252)
-layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("2_5qcur")
-expand_mode = 3
-stretch_mode = 4
 
-[node name="TextureRect9" type="TextureRect" parent="PanelContainer2/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(252, 252)
+[node name="PanelContainer3" type="PanelContainer" parent="."]
 layout_mode = 2
-texture = SubResource("GradientTexture2D_ax5op")
+size_flags_horizontal = 3
 
-[node name="TextureRect10" type="TextureRect" parent="PanelContainer2/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(252, 252)
+[node name="FichaDataDisplayer" parent="PanelContainer3" instance=ExtResource("4_xb12x")]
 layout_mode = 2
-texture = SubResource("GradientTexture2D_ax5op")
 
-[node name="TextureRect11" type="TextureRect" parent="PanelContainer2/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(252, 252)
-layout_mode = 2
-texture = SubResource("GradientTexture2D_ax5op")
-
-[node name="TextureRect12" type="TextureRect" parent="PanelContainer2/ScrollContainer/VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(252, 252)
-layout_mode = 2
-texture = ExtResource("2_5qcur")
-expand_mode = 3
+[connection signal="fichaSeleccionada" from="PanelContainer2/Fichas" to="." method="_on_fichas_ficha_seleccionada"]

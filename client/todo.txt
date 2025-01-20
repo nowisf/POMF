@@ -32,3 +32,17 @@ Data del lado del cliente
 13/1/25
 	[] animaciones con margenes
 	[]animaciones con invertir sprite
+	
+	[]al tener un "ficha_clickeable" seleccionado y clickear una ficha
+de la coleccion esta se agrega al set (se envia la solicitud y luego
+el servidor responde el cambio) 
+	[]conectar
+
+
+14/1/25
+	[]Ficha clickeable func "destacar"(): #permite que su padre, quien recive la funcion
+on click pueda dejarlo "holdeado", util para los combates y la construccion de masos
+
+
+20/1/25
+ [] solucionar flash del borde (quiza es tema de la app y no problema del juego)

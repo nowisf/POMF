@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://slqysjtxeoky"]
+
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_1w7kj"]
+[ext_resource type="Texture2D" uid="uid://bbhlvm7dxexnh" path="res://duendeRebelde.png" id="2_kg8n2"]
+
+[resource]
+script = ExtResource("1_1w7kj")
+nombre = "goblin rbd"
+descripcion = "El goblin que sabe las injusticias del sistema"
+texture = ExtResource("2_kg8n2")
+hero = false

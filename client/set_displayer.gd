@@ -25,4 +25,5 @@ func clear_children():
 
 
 func _ready() -> void:
+	#borrar en su momento
 	setSet(preload("res://data/set (test)/testSet.tres"))

@@ -14,8 +14,10 @@ func _on_login_button_pressed() -> void:
 func _on_sign_up_button_pressed() -> void:
 	boton_registrar_presionado.emit()
 
+
 func set_mensaje(mensaje):
 	$Panel/VBoxContainer/Panel/Mensaje.text = mensaje
+
 
 func _on_hidden() -> void:
 	$Panel/VBoxContainer/Panel/Mensaje.text = ""
