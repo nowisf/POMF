@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://skc64ccbqvvm"
-path="res://.godot/imported/duendeArmao.png-8184b96e0f4f37ff6bb101c14bcd41b2.ctex"
+uid="uid://c5etec24etmvl"
+path="res://.godot/imported/image_YAoA8E0F_1737785355290_raw.jpg-6a29708f9109f94e57feb5b1536f8f2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://duendeArmao.png"
-dest_files=["res://.godot/imported/duendeArmao.png-8184b96e0f4f37ff6bb101c14bcd41b2.ctex"]
+source_file="res://ilustracionesFichas/image_YAoA8E0F_1737785355290_raw.jpg"
+dest_files=["res://.godot/imported/image_YAoA8E0F_1737785355290_raw.jpg-6a29708f9109f94e57feb5b1536f8f2f.ctex"]
 
 [params]
 

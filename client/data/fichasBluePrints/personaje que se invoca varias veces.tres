@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://dgek652ptht4q"]
+
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_awpsf"]
+[ext_resource type="Texture2D" uid="uid://c5etec24etmvl" path="res://ilustracionesFichas/image_YAoA8E0F_1737785355290_raw.jpg" id="2_ko636"]
+
+[resource]
+script = ExtResource("1_awpsf")
+nombre = "EL chupador"
+descripcion = "chupador compulsivo, chupa vida x 5. PASIVO: Cuando golpea al jugador recupera el daño hecho"
+texture = ExtResource("2_ko636")
+hero = false

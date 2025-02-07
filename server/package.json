@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx main.ts"
+    "test": "tsx test.ts",
+    "start": "tsx main.ts",
+    "updateFichas": "tsx agregarCartas.ts"
   },
   "author": "",
   "license": "ISC",

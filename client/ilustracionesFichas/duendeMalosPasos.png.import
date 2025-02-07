@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbhlvm7dxexnh"
-path="res://.godot/imported/duendeRebelde.png-4d35fce6bd359d1388b2de0ad8e4ca5a.ctex"
+uid="uid://bxu5wk5d80bf0"
+path="res://.godot/imported/duendeMalosPasos.png-e80bf5346d213da6af0d0a08385b3492.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://duendeRebelde.png"
-dest_files=["res://.godot/imported/duendeRebelde.png-4d35fce6bd359d1388b2de0ad8e4ca5a.ctex"]
+source_file="res://ilustracionesFichas/duendeMalosPasos.png"
+dest_files=["res://.godot/imported/duendeMalosPasos.png-e80bf5346d213da6af0d0a08385b3492.ctex"]
 
 [params]
 

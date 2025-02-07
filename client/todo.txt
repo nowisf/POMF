@@ -19,7 +19,7 @@ Data del lado del cliente
 	[] nick recordado
 
 	[x] imagenes fichas
-	[] descripciones fichas
+	[x] descripciones fichas
 	[x] nombre(ID) fichas
 
 
@@ -46,3 +46,40 @@ on click pueda dejarlo "holdeado", util para los combates y la construccion de m
 
 20/1/25
  [] solucionar flash del borde (quiza es tema de la app y no problema del juego)
+26/1/25
+ [] BUG : al no lograr conectar no vuelve a intentar conectarse
+29/1/25
+[] borrar fichas blue prints cuando sistematise su contenido
+[x]crear fichas por defecto en el servidor (que hayan unas cuantas fichas que no se
+obtienen por defecto para testear possecion)
+[] "lineas/bloques de atributo" en descripciones
+
+[] pasar jsons a bd
+
+
+30/1/25
+[] ranking
+
+seleccion AUTOMATICA al cargar de 
+	[] nombre en inicio
+2/2/25
+[] mecanica armas, las puede recoger un aliado
+
+4/2/25
+[x] mostrar heroe en fichas
+[] respetar solo heroes en casilla de heroes
+[x] respetar no cartas repetidas
+[x] areglar bug de segunda carga necesaria para visualizar
+[] vaciar campo contraseña (si te desconectas quda visible)
+[] hacer contraseña *****
+
+5/2/25
+[] migrar bd a http://realm.io.s3-website-us-east-1.amazonaws.com/products/realm-database/
+[] reemplazar barra descripcion por tabla descriptiva emergente al poner mouse encima de
+	una ficha([] descripciones flotantes)
+[x] arreglar error de slots duplicados
+[] enviar fichas del set actual al loguear
+¿[]? no usar el json para actualizar (server->cliente) usar informacion en la bd 
+[] cambiar ficha de slot al solicitar volver a colocarla en un set
+[] mecanica: no poder jugar x turnos como coste adicional
+[] mecanica: cd inicial

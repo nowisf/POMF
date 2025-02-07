@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://02a6r7qqe5xd"]
 
 [ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_034m8"]
-[ext_resource type="Texture2D" uid="uid://cyg3iokpwu6ll" path="res://duende.png" id="2_agj01"]
+[ext_resource type="Texture2D" uid="uid://cyg3iokpwu6ll" path="res://ilustracionesFichas/duende.png" id="2_yxs87"]
 
 [resource]
 script = ExtResource("1_034m8")
-nombre = ""
-descripcion = ""
-texture = ExtResource("2_agj01")
+nombre = "Goblin"
+descripcion = "chupador compulsivo, chupa vida x 5. PASIVO: Cuando golpea al jugador recupera el daño hecho"
+texture = ExtResource("2_yxs87")
 hero = false

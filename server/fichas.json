@@ -1,0 +1,50 @@
+{
+  "Goblin": {
+    "nombre": "Goblin",
+    "descripcion": "Adversario irrelevante pero una pesadilla si tu equipo falla",
+    "texture": "duende.png",
+    "hero": false
+  },
+  "Goblinojado": {
+    "nombre": "Goblinojado",
+    "descripcion": "Similar al goblin pero en un mal dia",
+    "texture": "duendeeNojao.png",
+    "hero": false
+  },
+  "Goblina Rmao": {
+    "nombre": "Goblina Rmao",
+    "descripcion": "Goblin con fierro misterioso",
+    "texture": "duendeArmao.png",
+    "hero": false
+  },
+  "Goblin Malos Pasos": {
+    "nombre": "Goblin Malos Pasos",
+    "descripcion": "Goblin de pasado duro",
+    "texture": "duendeMalosPasos.png",
+    "hero": false
+  },
+  "Goblin Rebelde": {
+    "nombre": "Goblin Rebelde",
+    "descripcion": "Goblin conocedor de injusticias en el sistema",
+    "texture": "duendeRebelde.png",
+    "hero": true
+  },
+  "Estorbador": {
+    "nombre": "Estorbador",
+    "descripcion": "Estorba de manera continua, si golpeas al estorbador te da un x2 de ataque al dueño del estorbador",
+    "texture": "image_Wb02_2cT_1737786077547_raw.jpg",
+    "hero": false
+  },
+  "Succ": {
+    "nombre": "Succ",
+    "descripcion": "Succiona a sus adversarios, chupa vida x 5. PASIVO: Cuando golpea al herooe recupera el daño hecho",
+    "texture": "image_YAoA8E0F_1737785355290_raw.jpg",
+    "hero": false
+  },
+  "Doma Mundos": {
+    "nombre": "Doma Mundos",
+    "descripcion": "Sufre Aporakosmofobia.",
+    "texture": "image_ornJsrV7_1737786596609_raw.jpg",
+    "hero": true
+  }
+}

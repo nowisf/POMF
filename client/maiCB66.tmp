@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgqmtv6k8swh0"]
+[gd_scene load_steps=8 format=3 uid="uid://cgqmtv6k8swh0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_xqwck"]
 [ext_resource type="PackedScene" uid="uid://wxcasnbpknym" path="res://online.tscn" id="2_hpw6c"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://755crq4hxdue" path="res://interface_registro.tscn" id="5_esyvg"]
 [ext_resource type="PackedScene" uid="uid://dauyijy4uug81" path="res://builder_interface.tscn" id="6_tnk3y"]
 [ext_resource type="PackedScene" uid="uid://fcti8sfvw0pg" path="res://actualizar_interface.tscn" id="7_r5bnv"]
-[ext_resource type="Script" path="res://ficha_loader.gd" id="8_3p8b8"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xqwck")
@@ -44,9 +43,6 @@ visible = false
 
 [node name="Actualizar_interface" parent="." instance=ExtResource("7_r5bnv")]
 visible = false
-
-[node name="FichaLoader" type="Node" parent="."]
-script = ExtResource("8_3p8b8")
 
 [connection signal="coneccion_exitosa" from="Online" to="." method="_on_online_coneccion_exitosa"]
 [connection signal="desconectado" from="Online" to="." method="_on_online_desconectado"]

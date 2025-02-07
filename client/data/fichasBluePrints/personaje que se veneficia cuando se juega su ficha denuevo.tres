@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://chyc71qs0wwbp"]
+
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_jgak6"]
+[ext_resource type="Texture2D" uid="uid://6iljfp2utj81" path="res://ilustracionesFichas/image_Wb02_2cT_1737786077547_raw.jpg" id="2_2u1ce"]
+
+[resource]
+script = ExtResource("1_jgak6")
+nombre = "pana"
+descripcion = "personaje comunal y algo xenofobo"
+texture = ExtResource("2_2u1ce")
+hero = true

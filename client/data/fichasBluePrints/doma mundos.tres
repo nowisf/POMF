@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://pdt5cocsn1dj"]
+
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_pjylr"]
+[ext_resource type="Texture2D" uid="uid://cf1lu565xus60" path="res://ilustracionesFichas/image_ornJsrV7_1737786596609_raw.jpg" id="2_q6g3p"]
+
+[resource]
+script = ExtResource("1_pjylr")
+nombre = "doma mundos"
+descripcion = "fobia a no robar mundos. Ataques, si tu mama es guatona, te roba"
+texture = ExtResource("2_q6g3p")
+hero = true

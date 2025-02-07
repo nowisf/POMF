@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_te8ug"]
+[ext_resource type="Texture2D" path="res://ilustracionesFichas/duendeRebelde.png" id="2_qrfly"]
+
+[resource]
+script = ExtResource("1_te8ug")
+nombre = "Goblin Rebelde"
+descripcion = "Goblin conocedor de injusticias en el sistema"
+texture = ExtResource("2_qrfly")
+hero = true

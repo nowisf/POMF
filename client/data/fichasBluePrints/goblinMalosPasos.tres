@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://cuv0c4hcxiql3"]
 
 [ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_5l0v1"]
-[ext_resource type="Texture2D" uid="uid://bxu5wk5d80bf0" path="res://duendeMalosPasos.png" id="2_jauor"]
+[ext_resource type="Texture2D" uid="uid://bxu5wk5d80bf0" path="res://ilustracionesFichas/duendeMalosPasos.png" id="2_jg0xo"]
 
 [resource]
 script = ExtResource("1_5l0v1")
 nombre = "GoblinMalosPasos"
 descripcion = "Un goblin con un pasado duro"
-texture = ExtResource("2_jauor")
+texture = ExtResource("2_jg0xo")
 hero = false

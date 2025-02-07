@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_3jvye"]
+[ext_resource type="Texture2D" path="res://ilustracionesFichas/image_YAoA8E0F_1737785355290_raw.jpg" id="2_dlqnh"]
+
+[resource]
+script = ExtResource("1_3jvye")
+nombre = "Succ"
+descripcion = "Succiona a sus adversarios, chupa vida x 5. PASIVO: Cuando golpea al herooe recupera el daño hecho"
+texture = ExtResource("2_dlqnh")
+hero = false

@@ -1,7 +1,9 @@
+class_name Online
 extends Node
 
 signal coneccion_exitosa()
 signal mensaje_recibido(mensaje)
+signal desconectado()
 
 var url = "ws://127.0.0.1:8080" 
 
@@ -32,11 +34,14 @@ func _process(delta):
 		# Keep polling to achieve proper close.
 		pass
 	elif state == WebSocketPeer.STATE_CLOSED:
+		conectado = false
 		if ultimo_estado != WebSocketPeer.STATE_CLOSED:
 			var code = socket.get_close_code()
 			var reason = socket.get_close_reason()
 			print("WebSocket closed with code: %d, reason %s. Clean: %s" % [code, reason, code != -1])
 			ultimo_estado = WebSocketPeer.STATE_CLOSED
+			desconectado.emit()
+		else:
 			#quiza deba condicionarlo con la razon en caso de que sea intencionado
 			socket.connect_to_url(url)
 
@@ -60,6 +65,16 @@ func intentar_registro(name, password, mail):
 	}
 	var json_mensaje = JSON.stringify(mensaje)
 	socket.send_text(json_mensaje)
+	
+
+func solicitar_cambio_slot(slot: int, ficha: FichaBluePrintResource):
+	var mensaje = {
+		"type": "solicitar_cambio_slot",
+		"slot": slot,
+		"ficha": ficha.nombre
+	}
+	var json_mensaje = JSON.stringify(mensaje)
+	socket.send_text(json_mensaje)
 
 func _on_data(packet):
 	var test_json_conv = JSON.new()
@@ -71,3 +86,12 @@ func _on_data(packet):
 			
 	else:
 		print("JSON Parse Error: ", error)
+
+
+func enviarVersion(version: String):
+	var mensaje = {
+		"type": "enviar_version",
+		"version": version
+	}
+	var json_mensaje = JSON.stringify(mensaje)
+	socket.send_text(json_mensaje)

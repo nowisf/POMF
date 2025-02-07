@@ -6,6 +6,14 @@ extends Node
 @onready var registrar_scene : RegistroInterface = $InterfaceRegistro
 @onready var builder_scene : BuilderInterface = $Builder
 
+@onready var online : Online = $Online
+@onready var actualizarInterface : InterfaceActualizar = $Actualizar_interface
+
+@onready var version : DatoVersion = load("res://data/version/version.tres")
+
+@onready var ficha_loader: FichaLoader = $FichaLoader
+
+
 
 var fichasObtenidas = null 
 	# Al loguear solicitar fichas que se tienen
@@ -31,19 +39,20 @@ func cambiar_escena_actual(nueva_escena_actual):
 
 
 func _on_online_coneccion_exitosa() -> void:
-	cambiar_escena_actual(login_scene) 
+	cambiar_escena_actual(actualizarInterface) 
+	online.enviarVersion(version.version)
 
 
 func _on_login_credenciales_establecidas(username: Variant, password: Variant) -> void:
-	$Online.enviar_credenciales(username,password)
+	online.enviar_credenciales(username,password)
 
 
 func _on_login_boton_registrar_presionado() -> void:
 	cambiar_escena_actual(registrar_scene)
 
 
-func _on_interface_registro_datos_registro_establecidos(name: Variant, password: Variant, mail: Variant) -> void:
-	$Online.intentar_registro(name, password, mail)
+func _on_interface_registro_datos_registro_establecidos(nombre: Variant, password: Variant, mail: Variant) -> void:
+	online.intentar_registro(nombre, password, mail)
 
 
 func _on_interface_registro_back_button_pressed() -> void:
@@ -65,12 +74,58 @@ func _on_online_mensaje_recibido(mensaje: Variant) -> void:
 			if mensaje.exito:
 				login_scene.set_mensaje("Entrando. . .")
 				print("entrar")
-				cambiar_escena_actual(cargando_scene)
+				builder_scene.actualizar_fichas()
+				cambiar_escena_actual(builder_scene)
 				
 			else:
 				login_scene.set_mensaje("Datos invalidos")
-		"secion_data":
-			cambiar_escena_actual(builder_scene)
-	print(mensaje)
+		
+		"slot_actualizar":
+			print(mensaje)
+			
+			builder_scene.cambiar_slot(mensaje.slot, ficha_loader.obtener_carta(mensaje.ficha))
+			
+		"data_actualizar":
+			print("test1 main")
+			if mensaje.state == "actualizar":
+				print("a")
+				vaciar_carpeta("res://data/fichasBluePrintActualizacion/") 
+				print("a")
+				print(mensaje.fichas)
+				for fichaVersion in mensaje.fichas:
+					var fichabp =  FichaBluePrintResource.new()
+					var nueva_fichaVersion = mensaje.fichas[fichaVersion]
+					print(nueva_fichaVersion)
+					fichabp.hero = nueva_fichaVersion.hero	
+					fichabp.nombre = nueva_fichaVersion.nombre
+					fichabp.descripcion = nueva_fichaVersion.descripcion
+					fichabp.texture = load( "res://ilustracionesFichas/" + nueva_fichaVersion.texture)
+					
+					var ruta_fichas_nuevas = "res://data/fichasBluePrintActualizacion/" + fichabp.nombre + ".tres"
+					
+					ResourceSaver.save(fichabp, ruta_fichas_nuevas)
+					
+				version.cambiarVersion(var_to_str( mensaje.version))
+				get_tree().reload_current_scene()
 
+			cambiar_escena_actual(login_scene)
+
+
+
+func _on_builder_slot_de_set_seleccionada(slot: int, ficha: FichaBluePrintResource) -> void:
+	online.solicitar_cambio_slot(slot, ficha)
+
+
+func _on_online_desconectado() -> void:
+	cambiar_escena_actual(cargando_scene)
+
+func vaciar_carpeta(ruta: String) -> void:
+	var dir = DirAccess.open(ruta)
 	
+	if dir:
+		# Obtener y eliminar archivo
+		print("BUEEENAAAS")
+		for archivo in dir.get_files():
+			var archivo_ruta = ruta + "/" + archivo
+			dir.remove(archivo_ruta)
+			print("Archivo eliminado:", archivo_ruta)

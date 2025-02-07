@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DatoVersion" load_steps=2 format=3 uid="uid://cqjj8p6afvqon"]
+
+[ext_resource type="Script" path="res://data/VersionData.gd" id="1_44u7b"]
+
+[resource]
+script = ExtResource("1_44u7b")
+version = "1.0"

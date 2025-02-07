@@ -1,22 +1,45 @@
+class_name SetDisplayer
 extends VBoxContainer
 
 @export var setActual: Set
 @export var ficha_scene: PackedScene 
+@export var set_default: Set 
 
+var fichas: Array[FichaClickeableDisplay] = [] 
 
-func setSet(nuevoSet:Set):
+signal fichaSeleccionada(ficha:FichaClickeableDisplay)
+
+func cambiarSlot(slot: int, nuevaFicha: FichaBluePrintResource):
+	if slot >= 0 and slot < fichas.size():
+		print(fichas[slot])
+		fichas[slot].cambiarFichaBluePrint(nuevaFicha)
+	else:
+		print("error")
+func setSet(nuevoSet:Set):	
 	setActual = nuevoSet
+	print("test")
+	print(setActual)
+	print(setActual.fichaHeroe)
 	clear_children()
-
-	var ficha_nodo_heroe: FichaClickeableDisplay = ficha_scene.instantiate()  
+	fichas.clear() 	
+	
+	var ficha_nodo_heroe: FichaClickeableDisplay = incorporarFBP()
 	ficha_nodo_heroe.cambiarFichaBluePrint(setActual.fichaHeroe) 
 	ficha_nodo_heroe.hacerHeroe()
-	add_child(ficha_nodo_heroe)
-
-	for ficha in setActual.get_fichas():  
-		var ficha_nodo: FichaClickeableDisplay = ficha_scene.instantiate()  
+	
+	for ficha : FichaBluePrintResource in setActual.get_fichas():  
+		var ficha_nodo = incorporarFBP()
+		print(ficha.nombre)
 		ficha_nodo.cambiarFichaBluePrint(ficha) 
-		add_child(ficha_nodo)
+
+
+func incorporarFBP():
+	var ficha_nodo: FichaClickeableDisplay = ficha_scene.instantiate()
+	ficha_nodo.precionado.connect(_on_ficha_presionada)
+	add_child(ficha_nodo)
+	fichas.append(ficha_nodo)
+	
+	return ficha_nodo
 
 
 func clear_children():
@@ -26,4 +49,9 @@ func clear_children():
 
 func _ready() -> void:
 	#borrar en su momento
-	setSet(preload("res://data/set (test)/testSet.tres"))
+	setSet(set_default)
+
+func _on_ficha_presionada(fichaClickeable:FichaClickeableDisplay):
+	print("palmera #3121312")
+
+	fichaSeleccionada.emit(fichas.find(fichaClickeable))

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy2o4lb4pppfh"
-path="res://.godot/imported/duendeeNojao.png-bd77f6fb5b082d20dd7220e39ff16829.ctex"
+uid="uid://cf1lu565xus60"
+path="res://.godot/imported/image_ornJsrV7_1737786596609_raw.jpg-4a521a643bae211714b239a176ab57c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://duendeeNojao.png"
-dest_files=["res://.godot/imported/duendeeNojao.png-bd77f6fb5b082d20dd7220e39ff16829.ctex"]
+source_file="res://ilustracionesFichas/image_ornJsrV7_1737786596609_raw.jpg"
+dest_files=["res://.godot/imported/image_ornJsrV7_1737786596609_raw.jpg-4a521a643bae211714b239a176ab57c7.ctex"]
 
 [params]
 
