@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://coj2dhkd8s3ww"]
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_nvx14"]
-[ext_resource type="Texture2D" uid="uid://cyg3iokpwu6ll" path="res://ilustracionesFichas/duende.png" id="2_uc2fk"]
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_2i858"]
+[ext_resource type="Texture2D" path="res://ilustracionesFichas/duende.png" id="2_y4jiy"]
 
 [resource]
-script = ExtResource("1_nvx14")
+script = ExtResource("1_2i858")
 nombre = "Goblin"
 descripcion = "Adversario irrelevante pero una pesadilla si tu equipo falla"
-texture = ExtResource("2_uc2fk")
+texture = ExtResource("2_y4jiy")
 hero = false

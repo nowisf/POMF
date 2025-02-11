@@ -83,3 +83,4 @@ seleccion AUTOMATICA al cargar de
 [] cambiar ficha de slot al solicitar volver a colocarla en un set
 [] mecanica: no poder jugar x turnos como coste adicional
 [] mecanica: cd inicial
+[] agregar unas cuantas cartas para tener mas de las justas

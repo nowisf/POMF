@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://c87qo5dkodqyq"]
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_d8xcm"]
-[ext_resource type="Texture2D" uid="uid://cf1lu565xus60" path="res://ilustracionesFichas/image_ornJsrV7_1737786596609_raw.jpg" id="2_4dy61"]
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_dc48t"]
+[ext_resource type="Texture2D" path="res://ilustracionesFichas/image_ornJsrV7_1737786596609_raw.jpg" id="2_fklxa"]
 
 [resource]
-script = ExtResource("1_d8xcm")
+script = ExtResource("1_dc48t")
 nombre = "Doma Mundos"
 descripcion = "Sufre Aporakosmofobia."
-texture = ExtResource("2_4dy61")
+texture = ExtResource("2_fklxa")
 hero = true

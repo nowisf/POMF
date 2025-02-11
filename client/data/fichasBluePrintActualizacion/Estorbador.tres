@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3 uid="uid://gyt2uaqfshvr"]
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_0v1tl"]
-[ext_resource type="Texture2D" uid="uid://6iljfp2utj81" path="res://ilustracionesFichas/image_Wb02_2cT_1737786077547_raw.jpg" id="2_uguw0"]
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_eq6xm"]
+[ext_resource type="Texture2D" path="res://ilustracionesFichas/image_Wb02_2cT_1737786077547_raw.jpg" id="2_642je"]
 
 [resource]
-script = ExtResource("1_0v1tl")
+script = ExtResource("1_eq6xm")
 nombre = "Estorbador"
 descripcion = "Estorba de manera continua, si golpeas al estorbador te da un x2 de ataque al dueño del estorbador"
-texture = ExtResource("2_uguw0")
+texture = ExtResource("2_642je")
 hero = false

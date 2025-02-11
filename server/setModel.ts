@@ -6,6 +6,10 @@ interface Ficha {
   description: string;
 }
 
+interface FichaSlot {
+  puesto: number;
+  name: string | null;
+}
 const slotsTable =
   "CREATE TABLE IF NOT EXISTS slots (" +
   "'id' INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -237,9 +241,9 @@ export const eliminarCaracteristica = (id: number) => {
   return resultado.changes > 0;
 };
 
-export const obtenerFichaPorID = (id: number) => {
+export const obtenerFichaPorID = (id: number): Ficha | undefined => {
   const stmt = db.prepare("SELECT * FROM fichas WHERE id = ?");
-  return stmt.get(id);
+  return stmt.get(id) as Ficha | undefined;
 };
 
 export const obtenerFichaPorNombre = (name: string) => {
@@ -259,11 +263,18 @@ export const usuarioTieneFicha = (userId: number, fichaId: number): boolean => {
 };
 
 export const setTieneFicha = (setId: number, fichaId: number): boolean => {
+  var resultado = obtenerSlotPorFichaYSet(setId, fichaId);
+  return !!resultado;
+};
+
+export const obtenerSlotPorFichaYSet = (
+  setId: number,
+  fichaId: number
+): FichaSlot | undefined => {
   const stmt = db.prepare(
     "SELECT * FROM slots WHERE setId = ? AND fichaId = ?"
   );
-  const resultado = stmt.get(setId, fichaId);
-  return !!resultado;
+  return stmt.get(setId, fichaId) as FichaSlot | undefined;
 };
 
 export const agregarSlot = (setId: number, puesto: number) => {
@@ -285,17 +296,19 @@ export const establecerFichaSlot = (
   const updateStmt = db.prepare(
     "UPDATE slots SET fichaId = ? WHERE setId = ? AND puesto = ?"
   );
-  console.log(fichaId);
   const resultado = updateStmt.run(fichaId, setId, puesto);
+  if (resultado) {
+    console.log("supuestamente cambiamos la ficha");
+  }
   return resultado.changes > 0;
 };
 
-export const getSlots = (idSet: number) => {
+export const getSlots = (idSet: number): FichaSlot[] => {
   const stmt = db.prepare(
     `SELECT slots.puesto, fichas.name 
      FROM slots
      LEFT JOIN fichas ON slots.fichaId = fichas.id
      WHERE slots.setId = ?`
   );
-  return stmt.all(idSet);
+  return stmt.all(idSet) as FichaSlot[];
 };

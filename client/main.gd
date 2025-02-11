@@ -82,7 +82,9 @@ func _on_online_mensaje_recibido(mensaje: Variant) -> void:
 		
 		"slot_actualizar":
 			print(mensaje)
-			
+			print(mensaje.slot) 
+			print(mensaje.ficha)
+
 			builder_scene.cambiar_slot(mensaje.slot, ficha_loader.obtener_carta(mensaje.ficha))
 			
 		"data_actualizar":

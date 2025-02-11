@@ -23,11 +23,12 @@ import {
   agregarSlot,
   establecerFichaSlot,
   obtenerSetPorID,
+  getSlots,
+  obtenerSlotPorFichaY,
+  obtenerFichaPorID,
 } from "./setModel";
 
 import { db } from "./db";
-
-console.log("yes");
 
 const authenticatedClients = new Map<WebSocket, string>();
 
@@ -63,7 +64,7 @@ export const entregarFicha = (userName: string, fichaName: string) => {
   const fichaId = obtenerFichaPorNombre(fichaName)?.id;
   if (!fichaId) {
     console.log("Ficha no registrada: " + fichaName);
-    console.log(fichaId);
+
     return false;
   }
 
@@ -92,7 +93,19 @@ wss.on("connection", (ws: WebSocket) => {
           authenticatedClients.set(ws, usuario);
           var idLastSetUsuario = obtenerUsuarioPorUsername(usuario)?.lastSet;
           if (idLastSetUsuario) {
-            obtenerSetPorID(idLastSetUsuario);
+            console.log(getSlots(idLastSetUsuario));
+            console.log(getSlots[0]);
+            getSlots(idLastSetUsuario).forEach((casillaSlot) => {
+              var mensajeCambioSlot = {
+                type: "slot_actualizar",
+                ficha: casillaSlot.name,
+                slot: casillaSlot.puesto,
+              };
+
+              console.log(casillaSlot.name);
+              console.log(mensajeCambioSlot.ficha);
+              ws.send(JSON.stringify(mensajeCambioSlot));
+            });
           }
         } else {
           ws.send(JSON.stringify({ type: "login_respuesta", exito: false }));
@@ -159,18 +172,23 @@ wss.on("connection", (ws: WebSocket) => {
       const setId = usuario?.lastSet;
 
       if (userId && fichaId && typeof setId === "number") {
-        if (
-          usuarioTieneFicha(userId, fichaId) &&
-          !setTieneFicha(setId, fichaId)
-        ) {
-          var mensajeCambioSlot = {
-            type: "slot_actualizar",
-            ficha: data.ficha,
-            slot: data.slot,
-          };
-          console.log("fichaId: " + fichaId);
-          establecerFichaSlot(setId, data.slot, fichaId);
-          ws.send(JSON.stringify(mensajeCambioSlot));
+        if (usuarioTieneFicha(userId, fichaId)) {
+          if (setTieneFicha(setId, fichaId)) {
+            console.log("Ficha ya asignada a set");
+            //reemplazar
+            const puestoAReemplazar = obtenerSlotPorFichaY(
+              setId,
+              fichaId
+            )?.puesto;
+            console.log(puestoAReemplazar);
+            console.log("es ");
+            console.log(puestoAReemplazar);
+            if (typeof puestoAReemplazar == "number") {
+              console.log("puesto a reemplazar: " + puestoAReemplazar);
+              cambiarSlot(setId, puestoAReemplazar, ws, null);
+            }
+          }
+          cambiarSlot(setId, data.slot, ws, fichaId);
         }
       } else {
         console.log("error al asignar ficha a set");
@@ -185,3 +203,20 @@ wss.on("connection", (ws: WebSocket) => {
     authenticatedClients.delete(ws);
   });
 });
+
+function cambiarSlot(setId, slotTarget, ws, fichaId) {
+  var ficha = obtenerFichaPorID(fichaId);
+  let nombreFicha: string | null = null;
+
+  if (ficha) {
+    nombreFicha = ficha.name;
+  }
+  console.log(nombreFicha);
+  var mensajeCambioSlot = {
+    type: "slot_actualizar",
+    ficha: nombreFicha,
+    slot: slotTarget,
+  };
+  establecerFichaSlot(setId, slotTarget, fichaId);
+  ws.send(JSON.stringify(mensajeCambioSlot));
+}
