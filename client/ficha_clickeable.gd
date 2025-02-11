@@ -31,3 +31,9 @@ func _on_button_pressed() -> void:
 	precionado.emit(self)
 
 	
+
+
+
+func _on_focus_entered() -> void:
+
+	print("test")

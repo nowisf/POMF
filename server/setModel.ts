@@ -312,3 +312,15 @@ export const getSlots = (idSet: number): FichaSlot[] => {
   );
   return stmt.all(idSet) as FichaSlot[];
 };
+
+export const fichaIsHero = (fichaId: number): boolean => {
+  const stmt = db.prepare("SELECT * FROM FICHAS WHERE id = ? ");
+  const resultado: Ficha = stmt.get(fichaId) as Ficha;
+
+  if (!resultado) {
+    return false;
+  }
+
+  const data = JSON.parse(resultado.data);
+  return data.hero === true;
+};

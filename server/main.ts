@@ -24,8 +24,9 @@ import {
   establecerFichaSlot,
   obtenerSetPorID,
   getSlots,
-  obtenerSlotPorFichaY,
+  obtenerSlotPorFichaYSet,
   obtenerFichaPorID,
+  fichaIsHero,
 } from "./setModel";
 
 import { db } from "./db";
@@ -173,22 +174,26 @@ wss.on("connection", (ws: WebSocket) => {
 
       if (userId && fichaId && typeof setId === "number") {
         if (usuarioTieneFicha(userId, fichaId)) {
-          if (setTieneFicha(setId, fichaId)) {
-            console.log("Ficha ya asignada a set");
-            //reemplazar
-            const puestoAReemplazar = obtenerSlotPorFichaY(
-              setId,
-              fichaId
-            )?.puesto;
-            console.log(puestoAReemplazar);
-            console.log("es ");
-            console.log(puestoAReemplazar);
-            if (typeof puestoAReemplazar == "number") {
-              console.log("puesto a reemplazar: " + puestoAReemplazar);
-              cambiarSlot(setId, puestoAReemplazar, ws, null);
+          console.log("es heroe: " + fichaIsHero(fichaId));
+
+          //si es heroe y el slot es 0 o no es heroe y el slot no es 0
+          if (
+            (fichaIsHero(fichaId) && data.slot == 0) ||
+            (!fichaIsHero(fichaId) && data.slot != 0)
+          ) {
+            if (setTieneFicha(setId, fichaId)) {
+              //reemplazar
+              const puestoAReemplazar = obtenerSlotPorFichaYSet(
+                setId,
+                fichaId
+              )?.puesto;
+              if (typeof puestoAReemplazar == "number") {
+                console.log("puesto a reemplazar: " + puestoAReemplazar);
+                cambiarSlot(setId, puestoAReemplazar, ws, null);
+              }
             }
+            cambiarSlot(setId, data.slot, ws, fichaId);
           }
-          cambiarSlot(setId, data.slot, ws, fichaId);
         }
       } else {
         console.log("error al asignar ficha a set");
