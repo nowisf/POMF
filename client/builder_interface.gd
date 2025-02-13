@@ -5,7 +5,7 @@ extends Control
 @onready var fichas_displayer: FichasScrolleables = $PanelContainer2/Fichas
 
 signal slot_de_set_seleccionada(slot, ficha	)
-
+signal volver_button_pressed()
 
 func _on_set_displayer_ficha_seleccionada(slot) -> void:
 	var ficha_seleccionada: FichaClickeableDisplay = $PanelContainer2/Fichas.seleccionado
@@ -20,3 +20,9 @@ func cambiar_slot(slot:int, ficha:FichaBluePrintResource):
 
 func actualizar_fichas():
 	fichas_displayer.mostrarFichas()
+
+
+
+
+func _on_volver_button_pressed() -> void:
+	volver_button_pressed.emit()

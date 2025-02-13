@@ -62,10 +62,10 @@ theme_type_variation = &"FlatButton"
 
 [node name="FDPDisplayer" type="CanvasLayer" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SonidoFocus" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_hew0w")
-volume_db = -20.433
-pitch_scale = 1.93
+volume_db = -13.723
+pitch_scale = 3.38
 mix_target = 2
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

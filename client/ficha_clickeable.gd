@@ -50,7 +50,8 @@ func _on_button_mouse_entered() -> void:
 		
 	if( new_fdp.position.y +new_fdp.size.y > get_viewport_rect().size.y):
 		new_fdp.position.y -= new_fdp.position.y +new_fdp.size.y - get_viewport_rect().size.y
-	$AudioStreamPlayer.play()
+	$SonidoFocus.play()
+
 func _on_button_mouse_exited() -> void:
 	for hijo in $FDPDisplayer.get_children():
 		hijo.queue_free() 

@@ -134,3 +134,7 @@ func vaciar_carpeta(ruta: String) -> void:
 
 func _on_menu_principal_boton_sets_pressed() -> void:
 	cambiar_escena_actual(builder_scene)
+
+
+func _on_builder_volver_button_pressed() -> void:
+	cambiar_escena_actual(menu_principal)
