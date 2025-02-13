@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgqmtv6k8swh0"]
+[gd_scene load_steps=12 format=3 uid="uid://cgqmtv6k8swh0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_xqwck"]
 [ext_resource type="PackedScene" uid="uid://wxcasnbpknym" path="res://online.tscn" id="2_hpw6c"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://ficha_loader.gd" id="8_3p8b8"]
 [ext_resource type="Resource" uid="uid://go2l5eyfj1jm" path="res://data/fichasBluePrints/vacio.tres" id="9_anpuv"]
 [ext_resource type="PackedScene" uid="uid://3im184qb00l2" path="res://menu_principal.tscn" id="10_kjs70"]
+[ext_resource type="PackedScene" uid="uid://b786hxov0dala" path="res://popup_manifester.tscn" id="11_rvx51"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xqwck")
@@ -56,6 +57,8 @@ vacio = ExtResource("9_anpuv")
 
 [node name="MenuPrincipal" parent="." instance=ExtResource("10_kjs70")]
 visible = false
+
+[node name="PopupManifester" parent="." instance=ExtResource("11_rvx51")]
 
 [connection signal="coneccion_exitosa" from="Online" to="." method="_on_online_coneccion_exitosa"]
 [connection signal="desconectado" from="Online" to="." method="_on_online_desconectado"]

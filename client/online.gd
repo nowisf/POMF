@@ -18,7 +18,7 @@ func _ready():
 	print("iniciado modulo Online")
 	socket.connect_to_url(url)
 
-func _process(delta):
+func _process(_delta):
 	socket.poll()
 	var state = socket.get_ready_state()
 	if state == WebSocketPeer.STATE_OPEN:
@@ -56,10 +56,10 @@ func enviar_credenciales(usuario: String, clave: String):
 	socket.send_text(json_mensaje)
 
 
-func intentar_registro(name, password, mail):
+func intentar_registro(nombre, password, mail):
 	var mensaje = {
 		"type": "register",
-		"usuario": name,
+		"usuario": nombre,
 		"clave": password,
 		"mail": mail
 	}

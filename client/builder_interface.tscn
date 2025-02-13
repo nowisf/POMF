@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dul8fx85u10ab" path="res://set_displayer.tscn" id="3_mhdof"]
 [ext_resource type="PackedScene" uid="uid://vgcveikvebf8" path="res://fichas.tscn" id="3_urjmn"]
 [ext_resource type="Resource" uid="uid://28o4465u4nwx" path="res://data/set (test)/testSet.tres" id="3_ysbfv"]
-[ext_resource type="PackedScene" uid="uid://cwmcrxufcpyaf" path="res://ficha_data_displayer.tscn" id="4_xb12x"]
+[ext_resource type="AudioStream" uid="uid://b7iplf5hyk1yx" path="res://sonidos/explosion_asteroid-101886.mp3" id="5_4v6el"]
 
 [node name="Builder" type="HBoxContainer"]
 anchors_preset = 15
@@ -52,7 +52,7 @@ theme_override_constants/margin_right = 4
 [node name="SetDisplayer" parent="PanelContainer/Set Displayer/MarginContainer" instance=ExtResource("3_mhdof")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 1
 size_flags_vertical = 3
 set_default = ExtResource("3_ysbfv")
 
@@ -61,18 +61,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Fichas" parent="PanelContainer2" instance=ExtResource("3_urjmn")]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+focus_mode = 2
 "tamaño_fichas" = 200
 
-[node name="PanelContainer3" type="PanelContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="FichaDataDisplayer" parent="PanelContainer3" instance=ExtResource("4_xb12x")]
-layout_mode = 2
+[node name="SonidoCambioSlot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4v6el")
+pitch_scale = 3.73
 
 [connection signal="fichaSeleccionada" from="PanelContainer/Set Displayer/MarginContainer/SetDisplayer" to="." method="_on_set_displayer_ficha_seleccionada"]
 [connection signal="fichaSeleccionada" from="PanelContainer2/Fichas" to="." method="_on_fichas_ficha_seleccionada"]

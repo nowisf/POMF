@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgqmtv6k8swh0"]
+[gd_scene load_steps=10 format=3 uid="uid://cgqmtv6k8swh0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_xqwck"]
 [ext_resource type="PackedScene" uid="uid://wxcasnbpknym" path="res://online.tscn" id="2_hpw6c"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dauyijy4uug81" path="res://builder_interface.tscn" id="6_tnk3y"]
 [ext_resource type="PackedScene" uid="uid://fcti8sfvw0pg" path="res://actualizar_interface.tscn" id="7_r5bnv"]
 [ext_resource type="Script" path="res://ficha_loader.gd" id="8_3p8b8"]
-[ext_resource type="Resource" uid="uid://go2l5eyfj1jm" path="res://data/fichasBluePrints/vacio.tres" id="9_anpuv"]
 [ext_resource type="PackedScene" uid="uid://3im184qb00l2" path="res://menu_principal.tscn" id="10_kjs70"]
 
 [node name="Main" type="Node"]
@@ -52,7 +51,6 @@ visible = false
 
 [node name="FichaLoader" type="Node" parent="."]
 script = ExtResource("8_3p8b8")
-vacio = ExtResource("9_anpuv")
 
 [node name="MenuPrincipal" parent="." instance=ExtResource("10_kjs70")]
 visible = false

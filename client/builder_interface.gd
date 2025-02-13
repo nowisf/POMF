@@ -2,13 +2,9 @@ class_name BuilderInterface
 extends Control
 
 @onready var set_displayer : SetDisplayer = %SetDisplayer
-@onready var fichas_displayer: FichasScrolleables = %Fichas
+@onready var fichas_displayer: FichasScrolleables = $PanelContainer2/Fichas
 
 signal slot_de_set_seleccionada(slot, ficha	)
-
-func _on_fichas_ficha_seleccionada(ficha_escena: FichaClickeableDisplay) -> void:
-	$PanelContainer3/FichaDataDisplayer.establecerData(ficha_escena.fichaBPActual)
-	print(ficha_escena.fichaBPActual.hero)
 
 
 func _on_set_displayer_ficha_seleccionada(slot) -> void:
@@ -19,6 +15,7 @@ func _on_set_displayer_ficha_seleccionada(slot) -> void:
 
 func cambiar_slot(slot:int, ficha:FichaBluePrintResource):
 	set_displayer.cambiarSlot(slot,ficha)
+	$SonidoCambioSlot.play()
 
 
 func actualizar_fichas():

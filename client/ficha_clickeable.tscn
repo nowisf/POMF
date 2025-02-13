@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2rkb4kcroahk"]
+[gd_scene load_steps=9 format=3 uid="uid://d2rkb4kcroahk"]
 
 [ext_resource type="Texture2D" uid="uid://cc1v8j0dmmtlv" path="res://ilustracionesFichas/vacio.png" id="1_fyec2"]
 [ext_resource type="Script" path="res://ficha_clickeable.gd" id="2_54ej4"]
 [ext_resource type="Texture2D" uid="uid://c6y47fwqvji36" path="res://margenFicha.png" id="2_lftdu"]
 [ext_resource type="Shader" path="res://pasto.gdshader" id="3_er812"]
 [ext_resource type="Theme" uid="uid://dh0pt5k2g2qp5" path="res://temaFichaClickeableDeSetDisplayer.tres" id="4_rwl0f"]
+[ext_resource type="PackedScene" uid="uid://cwmcrxufcpyaf" path="res://ficha_data_displayer.tscn" id="6_p346m"]
+[ext_resource type="AudioStream" uid="uid://dmarhbl8h00jn" path="res://sonidos/ficha focus.mp3" id="7_hew0w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xb6vi"]
 shader = ExtResource("3_er812")
@@ -15,11 +17,11 @@ custom_minimum_size = Vector2(100, 0)
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = 1.0
 offset_top = -51.0
-offset_right = 106.0
+offset_right = 107.0
 offset_bottom = 51.0
 grow_vertical = 2
-size_flags_horizontal = 6
 size_flags_vertical = 3
 texture = ExtResource("2_lftdu")
 patch_margin_left = 6
@@ -27,6 +29,7 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 script = ExtResource("2_54ej4")
+fdp = ExtResource("6_p346m")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 material = SubResource("ShaderMaterial_xb6vi")
@@ -57,6 +60,16 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("4_rwl0f")
 theme_type_variation = &"FlatButton"
 
+[node name="FDPDisplayer" type="CanvasLayer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hew0w")
+volume_db = -20.433
+pitch_scale = 1.93
+mix_target = 2
+
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

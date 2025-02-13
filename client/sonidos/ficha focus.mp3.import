@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmarhbl8h00jn"
+path="res://.godot/imported/ficha focus.mp3-fe6df77e603460f7318e88a019224b92.mp3str"
+
+[deps]
+
+source_file="res://sonidos/ficha focus.mp3"
+dest_files=["res://.godot/imported/ficha focus.mp3-fe6df77e603460f7318e88a019224b92.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

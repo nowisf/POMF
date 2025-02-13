@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_ye6ui"]
+[ext_resource type="Texture2D" path="res://ilustracionesFichas/image_ornJsrV7_1737786596609_raw.jpg" id="2_06pbf"]
+
+[resource]
+script = ExtResource("1_ye6ui")
+nombre = "Doma Mundos2"
+descripcion = "Sufre Aporakosmofobia."
+texture = ExtResource("2_06pbf")
+hero = true

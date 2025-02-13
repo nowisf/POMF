@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://3im184qb00l2"]
+
+[ext_resource type="Script" path="res://menu_principal.gd" id="1_55eue"]
+
+[node name="Menu Principal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_55eue")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Boton Batallar" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Batallar"
+
+[node name="Boton Sets" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Builder"
+
+[node name="Boton Log Out" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Salir"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Boton Sets" to="." method="_on_boton_sets_pressed"]

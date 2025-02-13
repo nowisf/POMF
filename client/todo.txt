@@ -84,3 +84,6 @@ seleccion AUTOMATICA al cargar de
 [] mecanica: no poder jugar x turnos como coste adicional
 [] mecanica: cd inicial
 [] agregar unas cuantas cartas para tener mas de las justas
+
+12/2/25
+[] menu principal como pestaña

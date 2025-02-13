@@ -1,5 +1,6 @@
 extends Node
 
+
 @onready var login_scene : LoginInterface = $Login
 @onready var cargando_scene : Node = $Cargando
 
@@ -12,6 +13,8 @@ extends Node
 @onready var version : DatoVersion = load("res://data/version/version.tres")
 
 @onready var ficha_loader: FichaLoader = $FichaLoader
+
+@onready var menu_principal: MenuPrincipal = $"MenuPrincipal"
 
 
 
@@ -75,16 +78,12 @@ func _on_online_mensaje_recibido(mensaje: Variant) -> void:
 				login_scene.set_mensaje("Entrando. . .")
 				print("entrar")
 				builder_scene.actualizar_fichas()
-				cambiar_escena_actual(builder_scene)
+				cambiar_escena_actual(menu_principal)
 				
 			else:
 				login_scene.set_mensaje("Datos invalidos")
 		
 		"slot_actualizar":
-			print(mensaje)
-			print(mensaje.slot) 
-			print(mensaje.ficha)
-
 			builder_scene.cambiar_slot(mensaje.slot, ficha_loader.obtener_carta(mensaje.ficha))
 			
 		"data_actualizar":
@@ -131,3 +130,7 @@ func vaciar_carpeta(ruta: String) -> void:
 			var archivo_ruta = ruta + "/" + archivo
 			dir.remove(archivo_ruta)
 			print("Archivo eliminado:", archivo_ruta)
+
+
+func _on_menu_principal_boton_sets_pressed() -> void:
+	cambiar_escena_actual(builder_scene)

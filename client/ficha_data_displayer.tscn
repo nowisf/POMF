@@ -34,9 +34,12 @@ horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="PanelContainer"]
+custom_minimum_size = Vector2(252, 23)
 layout_mode = 2
 text = "data"
 autowrap_mode = 3
+
+[connection signal="resized" from="." to="." method="_on_resized"]
