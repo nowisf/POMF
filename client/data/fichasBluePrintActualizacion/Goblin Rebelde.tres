@@ -1,11 +1,22 @@
 [gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_r48qp"]
-[ext_resource type="Texture2D" path="res://ilustracionesFichas/duendeRebelde.png" id="2_b6luo"]
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_q5bee"]
+[ext_resource type="Texture2D" path="res://ilustracionesFichas/duendeRebelde.png" id="2_0b6pi"]
 
 [resource]
-script = ExtResource("1_r48qp")
+script = ExtResource("1_q5bee")
 nombre = "Goblin Rebelde"
 descripcion = "Goblin conocedor de injusticias en el sistema"
-texture = ExtResource("2_b6luo")
+texture = ExtResource("2_0b6pi")
 hero = true
+data = {
+"ataque": 100.0,
+"carga": 10.0,
+"defensa": 50.0,
+"descripcion": "Goblin conocedor de injusticias en el sistema",
+"enfriamiento": 10.0,
+"hero": true,
+"nombre": "Goblin Rebelde",
+"texture": "duendeRebelde.png",
+"vida": 500.0
+}

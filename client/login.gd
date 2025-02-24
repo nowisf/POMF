@@ -7,7 +7,6 @@ signal boton_registrar_presionado()
 
 
 func _on_login_button_pressed() -> void:
-	print("buenas tardes")
 	credenciales_establecidas.emit($Panel/VBoxContainer/UsernameInput.text,$Panel/VBoxContainer/PasswordInput.text)
 
 
@@ -21,3 +20,6 @@ func set_mensaje(mensaje):
 
 func _on_hidden() -> void:
 	$Panel/VBoxContainer/Panel/Mensaje.text = ""
+
+func limpiarPassword():
+	$Panel/VBoxContainer/PasswordInput.text = ""

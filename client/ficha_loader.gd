@@ -10,8 +10,6 @@ func obtener_carta(nombre ) -> FichaBluePrintResource:
 		var ruta = FICHAS_PATH + nombre + ".tres"
 		
 		if ResourceLoader.exists(ruta):
-			print("exito")
-			print(ResourceLoader.load(ruta))
 			return ResourceLoader.load(ruta)
 		else:
 			print("La carta '%s' no existe." % nombre)

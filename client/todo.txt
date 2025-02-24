@@ -40,14 +40,14 @@ el servidor responde el cambio)
 
 
 14/1/25
-	[]Ficha clickeable func "destacar"(): #permite que su padre, quien recive la funcion
+	[x?]Ficha clickeable func "destacar"(): #permite que su padre, quien recive la funcion
 on click pueda dejarlo "holdeado", util para los combates y la construccion de masos
 
 
 20/1/25
- [] solucionar flash del borde (quiza es tema de la app y no problema del juego)
+ [x] solucionar flash del borde (quiza es tema de la app y no problema del juego)
 26/1/25
- [] BUG : al no lograr conectar no vuelve a intentar conectarse
+ [x?] BUG : al no lograr conectar no vuelve a intentar conectarse
 29/1/25
 [] borrar fichas blue prints cuando sistematise su contenido
 [x]crear fichas por defecto en el servidor (que hayan unas cuantas fichas que no se
@@ -67,23 +67,27 @@ seleccion AUTOMATICA al cargar de
 
 4/2/25
 [x] mostrar heroe en fichas
-[] respetar solo heroes en casilla de heroes
+[x] respetar solo heroes en casilla de heroes
 [x] respetar no cartas repetidas
 [x] areglar bug de segunda carga necesaria para visualizar
-[] vaciar campo contraseña (si te desconectas quda visible)
-[] hacer contraseña *****
+[x] vaciar campo contraseña (si te desconectas quda visible)
+[x] hacer contraseña *****
 
 5/2/25
 [] migrar bd a http://realm.io.s3-website-us-east-1.amazonaws.com/products/realm-database/
-[] reemplazar barra descripcion por tabla descriptiva emergente al poner mouse encima de
+[x] reemplazar barra descripcion por tabla descriptiva emergente al poner mouse encima de
 	una ficha([] descripciones flotantes)
 [x] arreglar error de slots duplicados
-[] enviar fichas del set actual al loguear
+[x] enviar fichas del set actual al loguear
 ¿[]? no usar el json para actualizar (server->cliente) usar informacion en la bd 
-[] cambiar ficha de slot al solicitar volver a colocarla en un set
+[x] cambiar ficha de slot al solicitar volver a colocarla en un set
 [] mecanica: no poder jugar x turnos como coste adicional
 [] mecanica: cd inicial
-[] agregar unas cuantas cartas para tener mas de las justas
+[/] agregar unas cuantas cartas para tener mas de las justas
 
 12/2/25
 [] menu principal como pestaña
+
+14/2/25
+[]slot "recordarme" en login
+[]slot "inicio automatico" en login

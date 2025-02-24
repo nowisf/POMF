@@ -32,24 +32,24 @@ func _on_button_pressed() -> void:
 	precionado.emit(self)
 
 
-
-
-func _on_button_mouse_entered() -> void:
-	
-	
+func _on_button_mouse_entered() -> void:	
 	var new_fdp: FichaDataDisplayer = fdp.instantiate()
 	new_fdp.position = global_position
 	$FDPDisplayer.add_child(new_fdp)
 	new_fdp.establecerData(fichaBPActual)
 
-
+	#queda muy a la derecha
 	if(new_fdp.position.x +new_fdp.size.x + self.size.x > get_viewport_rect().size.x):
 		new_fdp.position.x -= new_fdp.size.x
 	else:
 		new_fdp.position.x += size.x
-		
+	#queda muy abajo
 	if( new_fdp.position.y +new_fdp.size.y > get_viewport_rect().size.y):
 		new_fdp.position.y -= new_fdp.position.y +new_fdp.size.y - get_viewport_rect().size.y
+	#queda muy arriba
+	if(new_fdp.position.y < 0):
+		new_fdp.position.y = 0
+	
 	$SonidoFocus.play()
 
 func _on_button_mouse_exited() -> void:

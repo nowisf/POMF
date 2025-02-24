@@ -1,11 +1,22 @@
 [gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_41sej"]
-[ext_resource type="Texture2D" path="res://ilustracionesFichas/duendeMalosPasos.png" id="2_lke6b"]
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_xd3cj"]
+[ext_resource type="Texture2D" path="res://ilustracionesFichas/duendeMalosPasos.png" id="2_17mws"]
 
 [resource]
-script = ExtResource("1_41sej")
+script = ExtResource("1_xd3cj")
 nombre = "Goblin Malos Pasos"
 descripcion = "Goblin de pasado duro"
-texture = ExtResource("2_lke6b")
+texture = ExtResource("2_17mws")
 hero = false
+data = {
+"ataque": 100.0,
+"carga": 10.0,
+"defensa": 50.0,
+"descripcion": "Goblin de pasado duro",
+"enfriamiento": 10.0,
+"hero": false,
+"nombre": "Goblin Malos Pasos",
+"texture": "duendeMalosPasos.png",
+"vida": 500.0
+}

@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://burokdyu3kdo6"]
+
+[ext_resource type="Script" path="res://data_bloque.gd" id="1_moilh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_st2k5"]
+bg_color = Color(0.639216, 0.376471, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.49171, 0.189509, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 20
+expand_margin_left = 1.0
+shadow_color = Color(0.758987, 0.49966, 1, 0.6)
+shadow_size = 2
+shadow_offset = Vector2(3, 1)
+anti_aliasing_size = 1.1
+
+[sub_resource type="Theme" id="Theme_g3b5s"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_st2k5")
+
+[node name="DataBloque" type="HBoxContainer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -14.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+theme = SubResource("Theme_g3b5s")
+script = ExtResource("1_moilh")
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="nombreStatLabel" type="Label" parent="PanelContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "a"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="valorStatLabel" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+text = "s"

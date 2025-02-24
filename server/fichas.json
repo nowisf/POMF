@@ -3,102 +3,88 @@
     "nombre": "Goblin",
     "descripcion": "Adversario irrelevante pero una pesadilla si tu equipo falla",
     "texture": "duende.png",
-    "hero": false
+    "hero": false,
+    "vida": 500,
+    "ataque": 100,
+    "defensa": 50,
+    "enfriamiento": 10,
+    "carga": 10
   },
   "Goblinojado": {
     "nombre": "Goblinojado",
     "descripcion": "Similar al goblin pero en un mal dia",
     "texture": "duendeeNojao.png",
-    "hero": false
+    "hero": false,
+    "vida": 500,
+    "ataque": 100,
+    "defensa": 50,
+    "enfriamiento": 10,
+    "carga": 10
   },
   "Goblina Rmao": {
     "nombre": "Goblina Rmao",
     "descripcion": "Goblin con fierro misterioso",
     "texture": "duendeArmao.png",
-    "hero": false
+    "hero": false,
+    "vida": 500,
+    "ataque": 100,
+    "defensa": 50,
+    "enfriamiento": 10,
+    "carga": 10
   },
   "Goblin Malos Pasos": {
     "nombre": "Goblin Malos Pasos",
     "descripcion": "Goblin de pasado duro",
     "texture": "duendeMalosPasos.png",
-    "hero": false
+    "hero": false,
+    "vida": 500,
+    "ataque": 100,
+    "defensa": 50,
+    "enfriamiento": 10,
+    "carga": 10
   },
   "Goblin Rebelde": {
     "nombre": "Goblin Rebelde",
     "descripcion": "Goblin conocedor de injusticias en el sistema",
     "texture": "duendeRebelde.png",
-    "hero": true
+    "hero": true,
+    "vida": 500,
+    "ataque": 100,
+    "defensa": 50,
+    "enfriamiento": 10,
+    "carga": 10
   },
   "Estorbador": {
     "nombre": "Estorbador",
     "descripcion": "Estorba de manera continua, si golpeas al estorbador te da un x2 de ataque al dueño del estorbador",
     "texture": "image_Wb02_2cT_1737786077547_raw.jpg",
-    "hero": false
+    "hero": false,
+    "vida": 500,
+    "ataque": 100,
+    "defensa": 50,
+    "enfriamiento": 10,
+    "carga": 10
   },
   "Succ": {
     "nombre": "Succ",
     "descripcion": "Succiona a sus adversarios, chupa vida x 5. PASIVO: Cuando golpea al herooe recupera el daño hecho",
     "texture": "image_YAoA8E0F_1737785355290_raw.jpg",
-    "hero": false
+    "hero": false,
+    "vida": 500,
+    "ataque": 100,
+    "defensa": 50,
+    "enfriamiento": 10,
+    "carga": 10
   },
   "Doma Mundos": {
     "nombre": "Doma Mundos",
     "descripcion": "Sufre Aporakosmofobia.",
     "texture": "image_ornJsrV7_1737786596609_raw.jpg",
-    "hero": true
-  },
-  "Aporakosmofobia": {
-    "nombre": "Aporakosmofobia",
-    "descripcion": "Miedo a la inmensidad del universo.",
-    "texture": "image_ornJsrV7_1737786596609_raw.jpg",
-    "hero": false
-  },
-  "Goblin2": {
-    "nombre": "Goblin2",
-    "descripcion": "Adversario irrelevante pero una pesadilla si tu equipo falla",
-    "texture": "duende.png",
-    "hero": false
-  },
-  "Goblinojado2": {
-    "nombre": "Goblinojado2",
-    "descripcion": "Similar al goblin pero en un mal dia",
-    "texture": "duendeeNojao.png",
-    "hero": false
-  },
-  "Goblina Rmao2": {
-    "nombre": "Goblina Rmao2",
-    "descripcion": "Goblin con fierro misterioso",
-    "texture": "duendeArmao.png",
-    "hero": false
-  },
-  "Goblin Malos Pasos2": {
-    "nombre": "Goblin Malos Pasos2",
-    "descripcion": "Goblin de pasado duro",
-    "texture": "duendeMalosPasos.png",
-    "hero": false
-  },
-  "Goblin Rebelde2": {
-    "nombre": "Goblin Rebelde2",
-    "descripcion": "Goblin conocedor de injusticias en el sistema",
-    "texture": "duendeRebelde.png",
-    "hero": true
-  },
-  "Estorbador2": {
-    "nombre": "Estorbador2",
-    "descripcion": "Estorba de manera continua, si golpeas al estorbador te da un x2 de ataque al dueño del estorbador",
-    "texture": "image_Wb02_2cT_1737786077547_raw.jpg",
-    "hero": false
-  },
-  "Succ2": {
-    "nombre": "Succ2",
-    "descripcion": "Succiona a sus adversarios, chupa vida x 5. PASIVO: Cuando golpea al herooe recupera el daño hecho",
-    "texture": "image_YAoA8E0F_1737785355290_raw.jpg",
-    "hero": false
-  },
-  "Doma Mundos2": {
-    "nombre": "Doma Mundos2",
-    "descripcion": "Sufre Aporakosmofobia.",
-    "texture": "image_ornJsrV7_1737786596609_raw.jpg",
-    "hero": true
+    "hero": true,
+    "vida": 500,
+    "ataque": 100,
+    "defensa": 50,
+    "enfriamiento": 10,
+    "carga": 10
   }
 }

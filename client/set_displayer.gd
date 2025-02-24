@@ -48,10 +48,7 @@ func clear_children():
 
 
 func _ready() -> void:
-	#borrar en su momento
 	setSet(set_default)
 
 func _on_ficha_presionada(fichaClickeable:FichaClickeableDisplay):
-	print("palmera #3121312")
-
 	fichaSeleccionada.emit(fichas.find(fichaClickeable))

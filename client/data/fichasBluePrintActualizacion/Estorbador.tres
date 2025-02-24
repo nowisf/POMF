@@ -1,11 +1,22 @@
 [gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_eq6xm"]
-[ext_resource type="Texture2D" path="res://ilustracionesFichas/image_Wb02_2cT_1737786077547_raw.jpg" id="2_642je"]
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_cao6j"]
+[ext_resource type="Texture2D" path="res://ilustracionesFichas/image_Wb02_2cT_1737786077547_raw.jpg" id="2_4nohr"]
 
 [resource]
-script = ExtResource("1_eq6xm")
+script = ExtResource("1_cao6j")
 nombre = "Estorbador"
 descripcion = "Estorba de manera continua, si golpeas al estorbador te da un x2 de ataque al dueño del estorbador"
-texture = ExtResource("2_642je")
+texture = ExtResource("2_4nohr")
 hero = false
+data = {
+"ataque": 100.0,
+"carga": 10.0,
+"defensa": 50.0,
+"descripcion": "Estorba de manera continua, si golpeas al estorbador te da un x2 de ataque al dueño del estorbador",
+"enfriamiento": 10.0,
+"hero": false,
+"nombre": "Estorbador",
+"texture": "image_Wb02_2cT_1737786077547_raw.jpg",
+"vida": 500.0
+}

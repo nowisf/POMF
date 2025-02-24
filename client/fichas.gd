@@ -39,11 +39,9 @@ func mostrarFichas():
 		var ficha_nodo: FichaClickeableDisplay = ficha_scene.instantiate()  
 		ficha_nodo.precionado.connect(_on_ficha_presionada)
 		ficha_nodo.cambiarFichaBluePrint(ficha) 
-		print("se cambia el minimo")
 		ficha_nodo.custom_minimum_size.y = tamaño_fichas
 		ficha_nodo.custom_minimum_size.x = tamaño_fichas
 		$VBoxContainer.add_child(ficha_nodo)
-		print(ficha)
 
 
 func _on_ficha_presionada(fichaClickeable:FichaClickeableDisplay):

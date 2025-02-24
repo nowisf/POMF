@@ -8,5 +8,3 @@ void vertex() {
 
 	//}
 }
-
-

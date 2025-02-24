@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgqmtv6k8swh0"]
+[gd_scene load_steps=14 format=3 uid="uid://cgqmtv6k8swh0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_xqwck"]
 [ext_resource type="PackedScene" uid="uid://wxcasnbpknym" path="res://online.tscn" id="2_hpw6c"]
@@ -10,28 +10,12 @@
 [ext_resource type="Script" path="res://ficha_loader.gd" id="8_3p8b8"]
 [ext_resource type="Resource" uid="uid://go2l5eyfj1jm" path="res://data/fichasBluePrints/vacio.tres" id="9_anpuv"]
 [ext_resource type="PackedScene" uid="uid://3im184qb00l2" path="res://menu_principal.tscn" id="10_kjs70"]
+[ext_resource type="AudioStream" uid="uid://b7iplf5hyk1yx" path="res://sonidos/explosion_asteroid-101886.mp3" id="11_vl3lk"]
+[ext_resource type="PackedScene" uid="uid://dul8fx85u10ab" path="res://set_displayer.tscn" id="12_b4b6r"]
+[ext_resource type="Resource" uid="uid://28o4465u4nwx" path="res://data/set (test)/testSet.tres" id="13_i1c87"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xqwck")
-
-[node name="combate" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 219.0
-offset_top = 210.0
-offset_right = 259.0
-offset_bottom = 250.0
-
-[node name="tablas" type="Control" parent="combate"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TabBar" type="TabBar" parent="combate"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Online" parent="." instance=ExtResource("2_hpw6c")]
 
@@ -56,6 +40,33 @@ vacio = ExtResource("9_anpuv")
 
 [node name="MenuPrincipal" parent="." instance=ExtResource("10_kjs70")]
 visible = false
+
+[node name="SonidoCambioPantalla" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_vl3lk")
+
+[node name="Combate" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Set displayer" parent="Combate" instance=ExtResource("12_b4b6r")]
+layout_mode = 1
+anchors_preset = 9
+anchor_right = 0.0
+offset_right = 136.0
+grow_horizontal = 1
+set_default = ExtResource("13_i1c87")
+
+[node name="Set displayer2" parent="Combate" instance=ExtResource("12_b4b6r")]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -100.0
+grow_horizontal = 0
+set_default = ExtResource("13_i1c87")
 
 [connection signal="coneccion_exitosa" from="Online" to="." method="_on_online_coneccion_exitosa"]
 [connection signal="desconectado" from="Online" to="." method="_on_online_desconectado"]

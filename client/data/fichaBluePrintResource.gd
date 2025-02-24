@@ -6,3 +6,5 @@ extends Resource
 @export var texture: Texture
 
 @export var hero: bool
+
+@export var data: Dictionary

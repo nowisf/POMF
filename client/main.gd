@@ -39,6 +39,7 @@ func cambiar_escena_actual(nueva_escena_actual):
 	nueva_escena_actual.show()		
 
 	actual_scene = nueva_escena_actual
+	
 
 
 func _on_online_coneccion_exitosa() -> void:
@@ -76,8 +77,8 @@ func _on_online_mensaje_recibido(mensaje: Variant) -> void:
 		"login_respuesta":
 			if mensaje.exito:
 				login_scene.set_mensaje("Entrando. . .")
-				print("entrar")
 				builder_scene.actualizar_fichas()
+				login_scene.limpiarPassword()
 				cambiar_escena_actual(menu_principal)
 				
 			else:
@@ -87,11 +88,9 @@ func _on_online_mensaje_recibido(mensaje: Variant) -> void:
 			builder_scene.cambiar_slot(mensaje.slot, ficha_loader.obtener_carta(mensaje.ficha))
 			
 		"data_actualizar":
-			print("test1 main")
 			if mensaje.state == "actualizar":
-				print("a")
+				print("Actualizando cartas")
 				vaciar_carpeta("res://data/fichasBluePrintActualizacion/") 
-				print("a")
 				print(mensaje.fichas)
 				for fichaVersion in mensaje.fichas:
 					var fichabp =  FichaBluePrintResource.new()
@@ -101,6 +100,7 @@ func _on_online_mensaje_recibido(mensaje: Variant) -> void:
 					fichabp.nombre = nueva_fichaVersion.nombre
 					fichabp.descripcion = nueva_fichaVersion.descripcion
 					fichabp.texture = load( "res://ilustracionesFichas/" + nueva_fichaVersion.texture)
+					fichabp.data = nueva_fichaVersion
 					
 					var ruta_fichas_nuevas = "res://data/fichasBluePrintActualizacion/" + fichabp.nombre + ".tres"
 					
@@ -125,7 +125,6 @@ func vaciar_carpeta(ruta: String) -> void:
 	
 	if dir:
 		# Obtener y eliminar archivo
-		print("BUEEENAAAS")
 		for archivo in dir.get_files():
 			var archivo_ruta = ruta + "/" + archivo
 			dir.remove(archivo_ruta)

@@ -68,6 +68,7 @@ text = "Password"
 
 [node name="PasswordInput" type="LineEdit" parent="Panel/VBoxContainer"]
 layout_mode = 2
+secret = true
 
 [node name="LoginButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2

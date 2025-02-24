@@ -1,11 +1,22 @@
 [gd_resource type="Resource" script_class="FichaBluePrintResource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_1pdia"]
-[ext_resource type="Texture2D" path="res://ilustracionesFichas/image_YAoA8E0F_1737785355290_raw.jpg" id="2_jl7ly"]
+[ext_resource type="Script" path="res://data/fichaBluePrintResource.gd" id="1_65m2o"]
+[ext_resource type="Texture2D" path="res://ilustracionesFichas/image_YAoA8E0F_1737785355290_raw.jpg" id="2_m83x1"]
 
 [resource]
-script = ExtResource("1_1pdia")
+script = ExtResource("1_65m2o")
 nombre = "Succ"
 descripcion = "Succiona a sus adversarios, chupa vida x 5. PASIVO: Cuando golpea al herooe recupera el daño hecho"
-texture = ExtResource("2_jl7ly")
+texture = ExtResource("2_m83x1")
 hero = false
+data = {
+"ataque": 100.0,
+"carga": 10.0,
+"defensa": 50.0,
+"descripcion": "Succiona a sus adversarios, chupa vida x 5. PASIVO: Cuando golpea al herooe recupera el daño hecho",
+"enfriamiento": 10.0,
+"hero": false,
+"nombre": "Succ",
+"texture": "image_YAoA8E0F_1737785355290_raw.jpg",
+"vida": 500.0
+}
