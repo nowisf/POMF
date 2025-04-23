@@ -54,6 +54,19 @@ interface RegisterData {
   clave: string;
   mail: string;
 }
+
+interface DatosCombate {
+  nombresJugadores: string[];
+  wsJugadores: WebSocket[];
+  setsJugadores: any[]; // Puedes definir un tipo más específico según tus necesidades
+  puestosRevelados: boolean[];
+  fichasInvocadas: any[]; // Puedes definir un tipo más específico según tus necesidades
+}
+
+interface ExtendedWebSocket extends WebSocket {
+  nombreUsuario: string;
+}
+
 export const entregarFicha = (userName: string, fichaName: string) => {
   const userId: number | undefined = obtenerUsuarioPorUsername(userName)?.id;
 
@@ -75,7 +88,7 @@ export const entregarFicha = (userName: string, fichaName: string) => {
 
 type MessageData = LoginData | RegisterData | { type: string }; // Agrega otros tipos si necesitas.
 
-wss.on("connection", (ws: WebSocket) => {
+wss.on("connection", (ws: ExtendedWebSocket) => {
   console.log("Conexion establecida ");
 
   ws.on("message", (message: WebSocket.RawData) => {
@@ -91,6 +104,7 @@ wss.on("connection", (ws: WebSocket) => {
       if (usuarioData) {
         if (usuarioData.password === clave) {
           ws.send(JSON.stringify({ type: "login_respuesta", exito: true }));
+          ws.nombreUsuario = usuario;
           authenticatedClients.set(ws, usuario);
           var idLastSetUsuario = obtenerUsuarioPorUsername(usuario)?.lastSet;
           if (idLastSetUsuario) {
@@ -198,6 +212,22 @@ wss.on("connection", (ws: WebSocket) => {
       } else {
         console.log("error al asignar ficha a set");
       }
+    } else if (data.type == "solicitar_combate") {
+      //agregar usuario al matchmaking
+      console.log("solicitar combate");
+
+      // match making guarda el ws y el id del usuario
+      matchMakingNoRanking(ws);
+
+      //
+    } else if (data.type == "solicitar_cancelar_busqueda_combate") {
+      //sacar usuario del matchmaking
+      console.log("solicitar combate cancelar");
+      quitarUsuarioDeMatchMaking(ws);
+      var mensajeCombateCancelado = {
+        type: "combate_cancelado",
+      };
+      ws.send(JSON.stringify(mensajeCombateCancelado));
     } else {
       console.log("Mensaje desconocido:", data);
     }
@@ -225,3 +255,57 @@ function cambiarSlot(setId, slotTarget, ws, fichaId) {
   establecerFichaSlot(setId, slotTarget, fichaId);
   ws.send(JSON.stringify(mensajeCambioSlot));
 }
+
+// Definir el array con su tipo
+var usuariosBuscandoCombateSinRanking: ExtendedWebSocket[] = [];
+
+function matchMakingNoRanking(ws: ExtendedWebSocket): void {
+  // si no hay usuarios en usuariosBuscandoCombateSinRanking, añadir el usuario
+  if (usuariosBuscandoCombateSinRanking.length === 0) {
+    usuariosBuscandoCombateSinRanking.push(ws);
+  } else {
+    //si hay usuarios, crear un combate
+    crearCombate(usuariosBuscandoCombateSinRanking[0], ws);
+    //quitar al usuario de usuariosBuscandoCombateSinRanking
+    quitarUsuarioDeMatchMaking(usuariosBuscandoCombateSinRanking[0].idUsuario);
+  }
+}
+
+function quitarUsuarioDeMatchMaking(ws: ExtendedWebSocket): void {
+  //quitar al usuario de usuariosBuscandoCombateSinRanking
+  usuariosBuscandoCombateSinRanking = usuariosBuscandoCombateSinRanking.filter(
+    (usuario) => usuario !== ws
+  );
+}
+
+var combates: DatosCombate[] = [];
+
+function crearCombate(
+  usuario1: ExtendedWebSocket,
+  usuario2: ExtendedWebSocket
+) {
+  //dataCombate.ALGUNA_DATA[0/1] dependiendo el jugador
+  var dataCombate: DatosCombate = {
+    nombresJugadores: [usuario1.nombreUsuario, usuario2.nombreUsuario],
+    wsJugadores: [usuario1, usuario2],
+    setsJugadores: [],
+    puestosRevelados: [],
+    fichasInvocadas: [],
+  };
+  combates.push(dataCombate);
+}
+
+function procesarTurnoCombate() {}
+
+function dañar() {}
+
+/*
+Pasos del combate
+Inicia el turno
+Se reducen los cds de las habilidades 
+Si una habilidad llega a 0
+Se escogeran los involucrados en el ataque (comunmente usando exposicion o heroe focus)
+  ~Deberian enmarcarse o destacarse, como minimo hacer visibles los participantes de una habilidad
+
+        
+*/
