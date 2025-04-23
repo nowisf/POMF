@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgqmtv6k8swh0"]
+[gd_scene load_steps=16 format=3 uid="uid://cgqmtv6k8swh0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_xqwck"]
 [ext_resource type="PackedScene" uid="uid://wxcasnbpknym" path="res://online.tscn" id="2_hpw6c"]
@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://3im184qb00l2" path="res://menu_principal.tscn" id="10_kjs70"]
 [ext_resource type="AudioStream" uid="uid://b7iplf5hyk1yx" path="res://sonidos/explosion_asteroid-101886.mp3" id="11_vl3lk"]
 [ext_resource type="PackedScene" uid="uid://dul8fx85u10ab" path="res://set_displayer.tscn" id="12_b4b6r"]
+[ext_resource type="Script" path="res://combate.gd" id="12_s8tmx"]
 [ext_resource type="Resource" uid="uid://28o4465u4nwx" path="res://data/set (test)/testSet.tres" id="13_i1c87"]
+[ext_resource type="PackedScene" uid="uid://cglopwe1gnpo0" path="res://buscando_combate.tscn" id="15_vmbe1"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xqwck")
@@ -45,12 +47,14 @@ visible = false
 stream = ExtResource("11_vl3lk")
 
 [node name="Combate" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("12_s8tmx")
 
 [node name="Set displayer" parent="Combate" instance=ExtResource("12_b4b6r")]
 layout_mode = 1
@@ -64,9 +68,12 @@ set_default = ExtResource("13_i1c87")
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
-offset_left = -100.0
+offset_left = -147.0
 grow_horizontal = 0
 set_default = ExtResource("13_i1c87")
+
+[node name="Buscando_Combate" parent="." instance=ExtResource("15_vmbe1")]
+visible = false
 
 [connection signal="coneccion_exitosa" from="Online" to="." method="_on_online_coneccion_exitosa"]
 [connection signal="desconectado" from="Online" to="." method="_on_online_desconectado"]
@@ -77,4 +84,6 @@ set_default = ExtResource("13_i1c87")
 [connection signal="credenciales_establecidas" from="Login" to="." method="_on_login_credenciales_establecidas"]
 [connection signal="slot_de_set_seleccionada" from="Builder" to="." method="_on_builder_slot_de_set_seleccionada"]
 [connection signal="volver_button_pressed" from="Builder" to="." method="_on_builder_volver_button_pressed"]
+[connection signal="boton_batallar_pressed" from="MenuPrincipal" to="." method="_on_menu_principal_boton_batallar_pressed"]
 [connection signal="boton_sets_pressed" from="MenuPrincipal" to="." method="_on_menu_principal_boton_sets_pressed"]
+[connection signal="busqueda_cancelada" from="Buscando_Combate" to="." method="_on_buscando_combate_busqueda_cancelada"]

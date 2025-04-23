@@ -37,3 +37,4 @@ func show_stats(stats: Dictionary):
 			contador = 0
 	if contador > 0:
 		%VBoxContainer.add_child(hbc_para_par_de_stats)
+	

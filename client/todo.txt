@@ -91,3 +91,6 @@ seleccion AUTOMATICA al cargar de
 14/2/25
 []slot "recordarme" en login
 []slot "inicio automatico" en login
+
+25/2/25
+[] habilitar menuPrincipal/boton log out

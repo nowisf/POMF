@@ -16,6 +16,7 @@ extends Node
 
 @onready var menu_principal: MenuPrincipal = $"MenuPrincipal"
 
+@onready var buscando_combate: BuscandoCombate = $Buscando_Combate
 
 
 var fichasObtenidas = null 
@@ -110,6 +111,10 @@ func _on_online_mensaje_recibido(mensaje: Variant) -> void:
 				get_tree().reload_current_scene()
 
 			cambiar_escena_actual(login_scene)
+		"buscando combate":
+			cambiar_escena_actual(buscando_combate)
+		"combate_cancelado":
+			cambiar_escena_actual(menu_principal)
 
 
 
@@ -137,3 +142,12 @@ func _on_menu_principal_boton_sets_pressed() -> void:
 
 func _on_builder_volver_button_pressed() -> void:
 	cambiar_escena_actual(menu_principal)
+
+
+func _on_menu_principal_boton_batallar_pressed() -> void:
+	online.solicitar_combate()	
+	cambiar_escena_actual(buscando_combate)
+
+
+func _on_buscando_combate_busqueda_cancelada() -> void:
+	online.solicitar_cancelar_busqueda_combate()

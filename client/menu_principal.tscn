@@ -44,4 +44,5 @@ text = "Builder"
 layout_mode = 2
 text = "Salir"
 
+[connection signal="pressed" from="Panel/VBoxContainer/Boton Batallar" to="." method="_on_boton_batallar_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Boton Sets" to="." method="_on_boton_sets_pressed"]

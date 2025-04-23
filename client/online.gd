@@ -52,8 +52,7 @@ func enviar_credenciales(usuario: String, clave: String):
 		"usuario": usuario,
 		"clave": clave,
 	}
-	var json_mensaje = JSON.stringify(mensaje)
-	socket.send_text(json_mensaje)
+	enviar_mensaje(mensaje)
 
 
 func intentar_registro(nombre, password, mail):
@@ -63,9 +62,8 @@ func intentar_registro(nombre, password, mail):
 		"clave": password,
 		"mail": mail
 	}
-	var json_mensaje = JSON.stringify(mensaje)
-	socket.send_text(json_mensaje)
-	
+	enviar_mensaje(mensaje)
+
 
 func solicitar_cambio_slot(slot: int, ficha: FichaBluePrintResource):
 	var mensaje = {
@@ -73,8 +71,8 @@ func solicitar_cambio_slot(slot: int, ficha: FichaBluePrintResource):
 		"slot": slot,
 		"ficha": ficha.nombre
 	}
-	var json_mensaje = JSON.stringify(mensaje)
-	socket.send_text(json_mensaje)
+	enviar_mensaje(mensaje)
+
 
 func _on_data(packet):
 	var test_json_conv = JSON.new()
@@ -93,5 +91,22 @@ func enviarVersion(version: String):
 		"type": "enviar_version",
 		"version": version
 	}
+	enviar_mensaje(mensaje)
+
+
+func solicitar_combate():
+	var mensaje = {
+		"type": "solicitar_combate"
+	}
+	enviar_mensaje(mensaje)
+
+
+func enviar_mensaje(mensaje):
 	var json_mensaje = JSON.stringify(mensaje)
 	socket.send_text(json_mensaje)
+
+func solicitar_cancelar_busqueda_combate():
+	var mensaje = {
+		"type": "solicitar_cancelar_busqueda_combate"
+	}
+	enviar_mensaje(mensaje)
