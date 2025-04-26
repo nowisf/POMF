@@ -1,4 +1,4 @@
-import { db } from "./db.ts";
+import { db } from "../db.ts";
 import { crearSet } from "./setModel";
 
 export interface User {
