@@ -1,5 +1,5 @@
-import { db } from "./db.ts";
-interface Ficha {
+import { db } from "../db.ts";
+export interface Ficha {
   id: number;
   name: string;
   data: string;
@@ -241,7 +241,11 @@ export const eliminarCaracteristica = (id: number) => {
   return resultado.changes > 0;
 };
 
-export const obtenerFichaPorID = (id: number): Ficha | undefined => {
+export const obtenerFichaPorID = (id: number | null): Ficha | undefined => {
+  if (id === null) {
+    return undefined;
+  }
+
   const stmt = db.prepare("SELECT * FROM fichas WHERE id = ?");
   return stmt.get(id) as Ficha | undefined;
 };

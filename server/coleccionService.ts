@@ -1,5 +1,5 @@
 import { obtenerUsuarioPorUsername } from "./models/userModel";
-import { obtenerFichaPorNombre, agregarFichaAUsuario } from "./setModel";
+import { obtenerFichaPorNombre, agregarFichaAUsuario } from "./models/setModel";
 
 export const entregarFicha = (userName: string, fichaName: string) => {
   const userId: number | undefined = obtenerUsuarioPorUsername(userName)?.id;

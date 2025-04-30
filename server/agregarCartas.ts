@@ -1,5 +1,5 @@
 import { db } from "./db.ts";
-import dataFichas from "./fichas.json"; // Importa el archivo JSON directamente
+import dataFichas from "./data/fichas.json"; // Importa el archivo JSON directamente
 
 // Define la estructura de tu JSON
 interface FichaData {

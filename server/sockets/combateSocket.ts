@@ -2,26 +2,26 @@
 import WebSocket from "ws";
 import { ExtendedWebSocket, DatosCombate } from "../types";
 import { obtenerUsuarioPorUsername } from "../models/userModel";
-import { getSlots, obtenerFichaPorID } from "../setModel";
+import { getSlots, obtenerFichaPorID } from "../models/setModel";
 
-// Tipos de mensajes relacionados con el combate
-export interface MensajeCombate {
-  type:
-    | "solicitar_combate"
-    | "combate_iniciado"
-    | "turno_iniciado"
-    | "realizar_accion"
-    | "accion_realizada"
-    | "combate_finalizado"
-    | "error_combate";
-  datos: any;
-}
+let usuariosBuscandoCombateSinRanking: ExtendedWebSocket[] = [];
+let combates: DatosCombate[] = [];
+
+
 
 // Manejadores de mensajes
 export const manejadoresMensajesCombate = {
-  solicitar_combate: (ws: ExtendedWebSocket, datos: any) => {
-    console.log("Solicitud de combate recibida");
+  solicitar_combate: (ws: ExtendedWebSocket) => {
     matchMakingNoRanking(ws);
+  },
+
+  solicitar_cancelar_busqueda_combate: (ws: ExtendedWebSocket) => {
+    console.log("solicitar combate cancelar");
+    quitarUsuarioDeMatchMaking(ws);
+    const mensajeCombateCancelado = {
+      type: "combate_cancelado",
+    };
+    ws.send(JSON.stringify(mensajeCombateCancelado));
   },
 
   realizar_accion: (ws: ExtendedWebSocket, datos: any) => {
@@ -64,7 +64,7 @@ export const notificacionesCombate = {
     broadcastCombate(combate, mensaje);
   },
 
-  enviarActualizacionEstado: (combate: DatosCombate) => {
+  enviarActualizacionEstado: (combate: DatosCombate) => 
     const mensaje = {
       type: "estado_actualizado",
       datos: {
@@ -130,4 +130,36 @@ function obtenerOponente(
   return combate.wsJugadores[0] === ws
     ? combate.wsJugadores[1]
     : combate.wsJugadores[0];
+}
+
+function matchMakingNoRanking(ws: ExtendedWebSocket): void {
+  if (usuariosBuscandoCombateSinRanking.length === 0) {
+    usuariosBuscandoCombateSinRanking.push(ws);
+  } else {
+    crearCombate(usuariosBuscandoCombateSinRanking[0], ws);
+    quitarUsuarioDeMatchMaking(ws);
+  }
+}
+
+function quitarUsuarioDeMatchMaking(ws: ExtendedWebSocket): void {
+  usuariosBuscandoCombateSinRanking = usuariosBuscandoCombateSinRanking.filter(
+    (usuario) => usuario !== ws
+  );
+}
+
+function crearCombate(
+  usuario1: ExtendedWebSocket,
+  usuario2: ExtendedWebSocket
+) {
+  const dataCombate: DatosCombate = {
+    nombresJugadores: [usuario1.nombreUsuario, usuario2.nombreUsuario],
+    wsJugadores: [usuario1, usuario2],
+    setsJugadores: [],
+    puestosRevelados: [],
+    fichasInvocadas: [],
+    eleccionActual: [null, null],
+  };
+  combates.push(dataCombate);
+  usuario1.combateActual = dataCombate;
+  usuario2.combateActual = dataCombate;
 }

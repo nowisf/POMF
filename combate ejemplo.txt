@@ -1,0 +1,29 @@
+interface EstadoFicha {
+  id: number;
+  nombre: string;
+  vidaActual: number;
+  vidaMaxima: number;
+  ataque: number;
+  defensa: number;
+  enfriamientoActual: number;
+  enfriamientoBase: number;
+  carga: number;
+  efectos: Efecto[];
+}
+
+interface Efecto {
+  tipo: string;
+  duracion: number;
+  valor: number;
+}
+
+interface DatosCombate {
+  id: string;
+  nombresJugadores: string[];
+  wsJugadores: WebSocket[];
+  setsJugadores: number[];
+  turnoActual: number;
+  ronda: number;
+  fichasEnJuego: Map<number, EstadoFicha>[];  // Un Map por jugador
+  puestosRevelados: boolean[];
+}

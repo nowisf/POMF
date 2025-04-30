@@ -1,0 +1,96 @@
+function iniciarCombate(usuario1: ExtendedWebSocket, usuario2: ExtendedWebSocket) {
+    const dataCombate: DatosCombate = {
+        id: generarIdUnico(),
+        nombresJugadores: [usuario1.nombreUsuario, usuario2.nombreUsuario],
+        wsJugadores: [usuario1, usuario2],
+        setsJugadores: [],
+        turnoActual: Math.floor(Math.random() * 2), // Jugador aleatorio inicia
+        ronda: 1,
+        fichasEnJuego: [new Map(), new Map()],
+        puestosRevelados: [false, false]
+    };
+
+    // Inicializar fichas de cada jugador
+    for (let i = 0; i < 2; i++) {
+        const usuario = obtenerUsuarioPorUsername(dataCombate.nombresJugadores[i]);
+        if (!usuario?.lastSet) continue;
+        
+        dataCombate.setsJugadores[i] = usuario.lastSet;
+        const slots = getSlots(usuario.lastSet);
+        
+        slots.forEach(slot => {
+            if (!slot.fichaId) return;
+            const ficha = obtenerFichaPorID(slot.fichaId);
+            if (!ficha) return;
+            
+            dataCombate.fichasEnJuego[i].set(slot.puesto, {
+                id: ficha.id,
+                nombre: ficha.name,
+                vidaActual: ficha.vida,
+                vidaMaxima: ficha.vida,
+                ataque: ficha.ataque,
+                defensa: ficha.defensa,
+                enfriamientoActual: ficha.enfriamiento,
+                enfriamientoBase: ficha.enfriamiento,
+                carga: ficha.carga,
+                efectos: []
+            });
+        });
+    }
+
+    combates.push(dataCombate);
+    notificarInicioCombate(dataCombate);
+}
+
+function procesarTurnoCombate(combateId: string) {
+    const combate = combates.find(c => c.id === combateId);
+    if (!combate) return;
+
+    // Reducir enfriamiento de todas las fichas del jugador actual
+    combate.fichasEnJuego[combate.turnoActual].forEach(ficha => {
+        if (ficha.enfriamientoActual > 0) {
+            ficha.enfriamientoActual--;
+        }
+        
+        // Procesar efectos
+        ficha.efectos = ficha.efectos.filter(efecto => {
+            efecto.duracion--;
+            return efecto.duracion > 0;
+        });
+    });
+
+    // Notificar estado actualizado
+    notificarEstadoCombate(combate);
+}
+
+function realizarAtaque(combateId: string, fichaAtacantePos: number, fichaObjetivoPos: number) {
+    const combate = combates.find(c => c.id === combateId);
+    if (!combate) return;
+
+    const atacante = combate.fichasEnJuego[combate.turnoActual].get(fichaAtacantePos);
+    const objetivo = combate.fichasEnJuego[1 - combate.turnoActual].get(fichaObjetivoPos);
+
+    if (!atacante || !objetivo || atacante.enfriamientoActual > 0) return;
+
+    // Calcular daño
+    const daño = Math.max(0, atacante.ataque - objetivo.defensa);
+    objetivo.vidaActual = Math.max(0, objetivo.vidaActual - daño);
+
+    // Reiniciar enfriamiento
+    atacante.enfriamientoActual = atacante.enfriamientoBase;
+
+    // Verificar muerte
+    if (objetivo.vidaActual <= 0) {
+        combate.fichasEnJuego[1 - combate.turnoActual].delete(fichaObjetivoPos);
+    }
+
+    // Notificar resultado del ataque
+    notificarAtaque(combate, {
+        atacante: fichaAtacantePos,
+        objetivo: fichaObjetivoPos,
+        daño: daño
+    });
+
+    // Verificar victoria
+    verificarVictoria(combate);
+}
